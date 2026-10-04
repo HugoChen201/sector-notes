@@ -424,20 +424,23 @@
       .company-detail .detail-body { padding-left: 2px; }
     }
     .sector-shell { border-bottom: 1px solid var(--line); background: var(--bg); }
-    .sector-tabs { display: flex; gap: 8px; padding: 16px 0 0; overflow-x: auto; scrollbar-width: thin; }
+    .sector-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; padding: 20px 0 0; background: var(--line); border-bottom: 1px solid var(--line); }
     .sector-tab {
-      appearance: none; border: 1px solid var(--line); border-bottom: 0; border-radius: 10px 10px 0 0;
-      background: var(--surface); color: var(--muted);
-      padding: 13px 24px; cursor: pointer; font-size: 15px; font-weight: 800; white-space: nowrap;
+      appearance: none; border: 0; border-bottom: 3px solid transparent;
+      background: var(--bg); color: var(--ink);
+      padding: 14px 18px 15px; cursor: pointer; text-align: left;
+      display: flex; flex-direction: column; gap: 7px;
     }
-    .sector-tab:hover { color: var(--ink); }
-    .sector-tab[aria-selected="true"] { color: var(--accent); border-bottom: 3px solid var(--accent); background: color-mix(in srgb, var(--surface) 55%, var(--bg)); }
+    .sector-tab .sector-num { font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+    .sector-tab .sector-name { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .sector-tab:hover { background: color-mix(in srgb, var(--surface) 65%, var(--bg)); }
+    .sector-tab[aria-selected="true"] { border-bottom-color: var(--accent); }
     .soon-badge { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line); border-radius: 20px; padding: 2px 8px; margin-left: 8px; vertical-align: 2px; }
     .sector-tab[aria-selected="true"] .soon-badge { color: var(--accent); border-color: var(--accent); }
     .mobile-sectors { display: none; padding: 10px 0; }
     .mobile-sectors label { font-size: 12px; font-weight: 700; color: var(--muted); margin-right: 9px; }
     .mobile-sectors select { width: calc(100% - 60px); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--surface); color: var(--ink); font-weight: 700; }
-    @media (max-width: 900px) { .sector-tabs { display: none; } .mobile-sectors { display: block; } }
+    @media (max-width: 900px) { .sector-tabs { grid-template-columns: repeat(2, 1fr); } .sector-tab .sector-name { font-size: 14px; } .mobile-sectors { display: none; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
@@ -455,14 +458,14 @@
 
   <nav class="sector-shell" aria-label="Sectors">
     <div class="wrap sector-tabs">
-      <button class="sector-tab" data-sector-tab="semiconductors" aria-selected="true">Semiconductors</button>
-      <button class="sector-tab" data-sector-tab="energy" aria-selected="false">Energy <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="healthcare" aria-selected="false">Healthcare <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="ai" aria-selected="false">AI <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="defensetech" aria-selected="false">Defense Tech <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="minerals" aria-selected="false">Critical Minerals <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="robotics" aria-selected="false">Robotics <span class="soon-badge">soon</span></button>
-      <button class="sector-tab" data-sector-tab="quantum" aria-selected="false">Quantum <span class="soon-badge">soon</span></button>
+      <button class="sector-tab" data-sector-tab="semiconductors" aria-selected="true"><span class="sector-num">Sector 01</span><span class="sector-name">Semiconductors</span></button>
+      <button class="sector-tab" data-sector-tab="energy" aria-selected="false"><span class="sector-num">Sector 02</span><span class="sector-name">Energy <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="healthcare" aria-selected="false"><span class="sector-num">Sector 03</span><span class="sector-name">Healthcare <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="ai" aria-selected="false"><span class="sector-num">Sector 04</span><span class="sector-name">AI <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="defensetech" aria-selected="false"><span class="sector-num">Sector 05</span><span class="sector-name">Defense Tech <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="minerals" aria-selected="false"><span class="sector-num">Sector 06</span><span class="sector-name">Critical Minerals <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="robotics" aria-selected="false"><span class="sector-num">Sector 07</span><span class="sector-name">Robotics &amp; Automation <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="quantum" aria-selected="false"><span class="sector-num">Sector 08</span><span class="sector-name">Quantum <span class="soon-badge">soon</span></span></button>
     </div>
     <div class="wrap mobile-sectors">
       <label for="sector-select">Sector</label>

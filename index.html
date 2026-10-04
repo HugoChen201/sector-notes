@@ -424,7 +424,7 @@
       .company-detail .detail-body { padding-left: 2px; }
     }
     .sector-shell { border-bottom: 1px solid var(--line); background: var(--bg); }
-    .sector-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; padding: 20px 0 0; background: var(--line); border-bottom: 1px solid var(--line); }
+    .sector-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; padding: 20px 0 0; background: var(--line); border-bottom: 1px solid var(--line); }
     .sector-tab {
       appearance: none; border: 0; border-bottom: 3px solid transparent;
       background: var(--bg); color: var(--ink);
@@ -440,7 +440,7 @@
     .mobile-sectors { display: none; padding: 10px 0; }
     .mobile-sectors label { font-size: 12px; font-weight: 700; color: var(--muted); margin-right: 9px; }
     .mobile-sectors select { width: calc(100% - 60px); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--surface); color: var(--ink); font-weight: 700; }
-    @media (max-width: 900px) { .sector-tabs { grid-template-columns: repeat(2, 1fr); } .sector-tab .sector-name { font-size: 14px; } .mobile-sectors { display: none; } }
+    @media (max-width: 900px) { .sector-tabs { grid-template-columns: repeat(2, 1fr); } .sector-tab:last-child { grid-column: span 2; } .sector-tab .sector-name { font-size: 14px; } .mobile-sectors { display: none; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>

@@ -466,11 +466,12 @@
       <button class="sector-tab" data-sector-tab="minerals" aria-selected="false"><span class="sector-num">Sector 06</span><span class="sector-name">Critical Minerals <span class="soon-badge">soon</span></span></button>
       <button class="sector-tab" data-sector-tab="robotics" aria-selected="false"><span class="sector-num">Sector 07</span><span class="sector-name">Robotics &amp; Automation <span class="soon-badge">soon</span></span></button>
       <button class="sector-tab" data-sector-tab="quantum" aria-selected="false"><span class="sector-num">Sector 08</span><span class="sector-name">Quantum <span class="soon-badge">soon</span></span></button>
+      <button class="sector-tab" data-sector-tab="everydaytech" aria-selected="false"><span class="sector-num">Sector 09</span><span class="sector-name">Everyday Tech</span></button>
     </div>
     <div class="wrap mobile-sectors">
       <label for="sector-select">Sector</label>
       <select id="sector-select" aria-label="Choose a sector">
-        <option value="semiconductors">Semiconductors</option><option value="energy">Energy</option><option value="healthcare">Healthcare</option><option value="ai">AI</option><option value="defensetech">Defense Tech</option><option value="minerals">Critical Minerals</option><option value="robotics">Robotics &amp; Automation</option><option value="quantum">Quantum</option>
+        <option value="semiconductors">Semiconductors</option><option value="energy">Energy</option><option value="healthcare">Healthcare</option><option value="ai">AI</option><option value="defensetech">Defense Tech</option><option value="minerals">Critical Minerals</option><option value="robotics">Robotics &amp; Automation</option><option value="quantum">Quantum</option><option value="everydaytech">Everyday Tech</option>
       </select>
     </div>
   </nav>
@@ -2578,6 +2579,160 @@
         <article class="roadmap-card"><span class="coming">Coming soon</span><h3>From qubit to application</h3><p>What quantum computers can actually do, why they're so hard to build, and which approaches are real versus narrative.</p><ul class="roadmap-list"><li>The qubit: superposition, entanglement, and why error correction is the whole game</li><li>The hardware race: superconducting, trapped ion, neutral atom, photonic</li><li>The timeline problem: what "quantum advantage" claims are really worth</li><li>The companies and the money: who's funded and who's shipping</li></ul></article>
       </section>
     </div>
+    <div data-sector="everydaytech" hidden>
+  <section class="panel">
+    <div class="panel-head"><div><p class="chapter-label">Sector 09</p><h2>Everyday Tech</h2><p class="panel-intro">How the technology around you actually works &mdash; one familiar thing at a time.</p></div><span class="status">New</span></div>
+
+    <h3 class="section-title">Tap to Pay</h3>
+    <p class="section-intro">You hold your phone near a terminal, it buzzes, and in about two seconds money has moved from your bank to the store &mdash; without your card number ever traveling through the air. Here is everything that happens in those two seconds, step by step.</p>
+
+    <div class="stats" aria-label="Key numbers">
+      <div class="stat"><strong>~4 cm</strong><span>how close you must tap</span></div>
+      <div class="stat"><strong>13.56 MHz</strong><span>the NFC radio frequency</span></div>
+      <div class="stat"><strong>~1&ndash;2 s</strong><span>tap to approval</span></div>
+      <div class="stat"><strong>0</strong><span>real card numbers transmitted</span></div>
+      <div class="stat"><strong>1 token</strong><span>per card, per device</span></div>
+    </div>
+
+    <div class="step-stack">
+      <details class="step-card">
+        <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">The handshake</span><span class="step-name">NFC: the 4-centimeter conversation</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p><strong>NFC</strong> (near-field communication) is just a short-range radio. Your phone and the payment terminal talk on a <strong>13.56&nbsp;MHz</strong> frequency &mdash; far below Wi-Fi or Bluetooth &mdash; using <strong>electromagnetic induction</strong>: the terminal&rsquo;s antenna generates a magnetic field, and your phone&rsquo;s NFC antenna picks it up like a tiny power receiver.</p>
+          <p>That field collapses within centimeters, which is why you have to tap <em>close</em>. The ~4&nbsp;cm range is not a limitation engineers failed to fix &mdash; it is a security feature. Nobody across the room can eavesdrop on a conversation that physically cannot reach them.</p>
+          <p class="plain-note"><strong>In plain English:</strong> two antennas whisper to each other using magnetism, and the whisper dies after a few centimeters.</p>
+        </div></div>
+      </details>
+
+      <details class="step-card">
+        <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">Unlock</span><span class="step-name">Your phone proves it&rsquo;s you</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p>Before any payment data moves, your phone demands proof: <strong>Face&nbsp;ID, a fingerprint, or your passcode</strong>. Until you authenticate, the wallet app simply refuses to hand over anything.</p>
+          <p>This is the step a physical card can never do. A plastic card pays whoever holds it; a phone pays only its owner. It is the first of three independent locks on the transaction &mdash; <em>you</em>, the <em>token</em>, and the <em>one-time code</em> you will meet in the next steps.</p>
+          <aside class="company-panel">
+            <h4>Companies behind this step</h4>
+            <p><strong>Apple</strong> (USA) built Apple&nbsp;Pay around on-device biometrics and a dedicated security chip; <strong>Google</strong> (USA) built Google&nbsp;Wallet on the same principle for Android, pioneering the cloud-based alternative you will meet in step&nbsp;4.</p>
+          </aside>
+        </div></div>
+      </details>
+
+      <details class="step-card">
+        <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">The disguise</span><span class="step-name">The token, not your card number</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p>When you first add a card to your phone, your bank does something clever: instead of storing your real card number, it asks the card network for a <strong>token</strong> &mdash; a substitute number, called a <strong>DPAN</strong> (device primary account number), that is unique to <em>your card on that one device</em>. Lose your phone and the bank can kill that token without touching your physical card.</p>
+          <p>At tap time your phone sends the token plus a <strong>cryptogram</strong>: a one-time code generated from a secret key for <em>this exact purchase</em>. The cryptogram cannot be replayed &mdash; intercept it and it is already dead.</p>
+          <p>The standard behind all of this is <strong>EMVCo tokenization</strong>, run by the card networks. The golden rule: <strong>your real card number never leaves the phone</strong> &mdash; it never crosses the NFC link, never sits on the terminal, never touches the store.</p>
+          <figure class="inline-figure">
+            <figcaption class="figure-label">WHAT TRAVELS VS. WHAT STAYS</figcaption>
+            <svg viewBox="0 0 640 240" role="img" aria-label="Diagram: the token and one-time cryptogram travel; the real card number stays locked in a vault" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+              <g font-family="system-ui,sans-serif">
+                <rect x="20" y="30" width="280" height="180" rx="10" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                <text x="160" y="58" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="700">TRAVELS (over NFC)</text>
+                <text x="160" y="95" text-anchor="middle" fill="#f5a623" font-size="15" font-weight="700">Token: 4895 &#8226;&#8226;&#8226;&#8226; 1234</text>
+                <text x="160" y="120" text-anchor="middle" fill="#aeb7c2" font-size="12">device-specific substitute number</text>
+                <text x="160" y="155" text-anchor="middle" fill="#f5a623" font-size="15" font-weight="700">One-time cryptogram</text>
+                <text x="160" y="180" text-anchor="middle" fill="#aeb7c2" font-size="12">valid for this purchase only</text>
+                <rect x="340" y="30" width="280" height="180" rx="10" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                <text x="480" y="58" text-anchor="middle" fill="#7ee787" font-size="13" font-weight="700">STAYS LOCKED AWAY</text>
+                <text x="480" y="95" text-anchor="middle" fill="#aeb7c2" font-size="15" font-weight="700">Real card: 4111 &#8226;&#8226;&#8226;&#8226; 9876</text>
+                <text x="480" y="120" text-anchor="middle" fill="#aeb7c2" font-size="12">sits in the bank&rsquo;s token vault</text>
+                <text x="480" y="155" text-anchor="middle" fill="#aeb7c2" font-size="15" font-weight="700">Secret keys</text>
+                <text x="480" y="180" text-anchor="middle" fill="#aeb7c2" font-size="12">sealed in tamper-proof hardware</text>
+              </g>
+            </svg>
+          </figure>
+          <p class="plain-note"><strong>In plain English:</strong> your phone wears a mask (the token) and speaks a password that self-destructs (the cryptogram). Your real identity never appears.</p>
+        </div></div>
+      </details>
+
+      <details class="step-card">
+        <summary><span class="step-badge">4</span><span class="step-heading"><span class="step-kicker">The vault</span><span class="step-name">Where the secrets actually live</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p>The token and the keys that mint cryptograms have to live somewhere thieves cannot reach. Two designs do this:</p>
+          <p><strong>The Secure Element (iPhone).</strong> A dedicated, tamper-resistant chip &mdash; literally a tiny vault soldered into the phone. The keys live inside it and <em>never leave</em>; even the phone&rsquo;s own operating system can only ask it to sign, never to reveal. Attack it physically and it wipes itself.</p>
+          <p><strong>Host Card Emulation (Android).</strong> Instead of a chip, the secrets live in the cloud: Google&rsquo;s servers hand your phone a small batch of limited-use keys, good for a few transactions. Run out and the phone quietly fetches more when online. Slightly less fortress-like, far more flexible &mdash; it works on any Android phone with NFC.</p>
+          <aside class="company-panel">
+            <h4>Companies behind this step</h4>
+            <p><strong>NXP Semiconductors</strong> (Netherlands) makes the NFC controller chips inside most phones &mdash; the radio that does the tapping. <strong>Infineon</strong> (Germany) is a giant of the secure-element chips that guard the keys.</p>
+          </aside>
+        </div></div>
+      </details>
+
+      <details class="step-card">
+        <summary><span class="step-badge">5</span><span class="step-heading"><span class="step-kicker">The relay</span><span class="step-name">The two-second relay race</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p>Your tap starts a relay with five runners, each checking one thing:</p>
+          <p><strong>1. Terminal</strong> (the store&rsquo;s reader) &mdash; collects the token and cryptogram.<br/>
+          <strong>2. Acquirer</strong> (the store&rsquo;s bank) &mdash; routes the payment toward the right network.<br/>
+          <strong>3. Card network</strong> (<strong>Visa</strong>/<strong>Mastercard</strong>) &mdash; swaps the token back for your real account number in its vault and verifies the cryptogram is fresh.<br/>
+          <strong>4. Issuer</strong> (your bank) &mdash; the only one that knows your balance: checks funds, fraud patterns, and limits, then approves or declines.<br/>
+          <strong>5.</strong> The answer sprints back along the same chain &mdash; and the terminal buzzes.</p>
+          <p>All of it, there and back, in about one to two seconds. <strong>Acquirer</strong> = the merchant&rsquo;s bank. <strong>Issuer</strong> = your bank. The network in the middle is the translator both sides trust.</p>
+          <figure class="inline-figure">
+            <figcaption class="figure-label">THE TWO-SECOND RELAY</figcaption>
+            <svg viewBox="0 0 680 250" role="img" aria-label="Diagram: phone to terminal to acquirer to network to issuer, and approval back" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+              <g font-family="system-ui,sans-serif" text-anchor="middle">
+                <rect x="14" y="40" width="112" height="64" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                <text x="70" y="66" fill="#f5a623" font-size="12" font-weight="700">PHONE</text>
+                <text x="70" y="86" fill="#aeb7c2" font-size="11">sends token</text>
+                <rect x="152" y="40" width="112" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                <text x="208" y="66" fill="#58a6ff" font-size="12" font-weight="700">TERMINAL</text>
+                <text x="208" y="86" fill="#aeb7c2" font-size="11">collects tap</text>
+                <rect x="290" y="40" width="112" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                <text x="346" y="66" fill="#58a6ff" font-size="12" font-weight="700">ACQUIRER</text>
+                <text x="346" y="86" fill="#aeb7c2" font-size="11">store&rsquo;s bank</text>
+                <rect x="428" y="40" width="112" height="64" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                <text x="484" y="66" fill="#7ee787" font-size="12" font-weight="700">NETWORK</text>
+                <text x="484" y="86" fill="#aeb7c2" font-size="11">detokenizes</text>
+                <rect x="566" y="40" width="100" height="64" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                <text x="616" y="66" fill="#7ee787" font-size="12" font-weight="700">ISSUER</text>
+                <text x="616" y="86" fill="#aeb7c2" font-size="11">your bank</text>
+                <g stroke="#f5a623" stroke-width="2" fill="none">
+                  <line x1="126" y1="72" x2="148" y2="72"/><polygon points="148,72 140,67 140,77" fill="#f5a623" stroke="none"/>
+                  <line x1="264" y1="72" x2="286" y2="72"/><polygon points="286,72 278,67 278,77" fill="#f5a623" stroke="none"/>
+                  <line x1="402" y1="72" x2="424" y2="72"/><polygon points="424,72 416,67 416,77" fill="#f5a623" stroke="none"/>
+                  <line x1="540" y1="72" x2="562" y2="72"/><polygon points="562,72 554,67 554,77" fill="#f5a623" stroke="none"/>
+                </g>
+                <line x1="616" y1="150" x2="70" y2="150" stroke="#ff9e64" stroke-width="2" stroke-dasharray="7,5"/>
+                <polygon points="70,150 80,145 80,155" fill="#ff9e64"/>
+                <text x="343" y="178" fill="#ff9e64" font-size="12">approval races back the same chain</text>
+                <text x="343" y="200" fill="#aeb7c2" font-size="12">total: about 1&ndash;2 seconds</text>
+                <text x="343" y="230" fill="#aeb7c2" font-size="11">Each runner checks one thing: identity, routing, token, funds.</text>
+              </g>
+            </svg>
+          </figure>
+          <aside class="company-panel">
+            <h4>Companies behind this step</h4>
+            <p><strong>Visa</strong> (USA) and <strong>Mastercard</strong> (USA) run the networks in the middle &mdash; and both run the token vaults (Visa Token Service, Mastercard MDES) that swap your token back for your real account number.</p>
+          </aside>
+        </div></div>
+      </details>
+
+      <details class="step-card">
+        <summary><span class="step-badge">6</span><span class="step-heading"><span class="step-kicker">The payoff</span><span class="step-name">Why it beats the swipe</span></span></summary>
+        <div class="detail-body"><div class="step-story">
+          <p>A magnetic stripe is a <strong>static secret</strong>: the same card number, copied the same way, every swipe. Skim it once &mdash; with a fake reader over a gas pump, say &mdash; and the thief can clone your card and spend freely until you notice.</p>
+          <p>A tap has <strong>three moving locks</strong> instead of one static one:</p>
+          <p><strong>1. The token</strong> is useless anywhere but your device &mdash; steal it and the bank just kills it.<br/>
+          <strong>2. The cryptogram</strong> dies after one purchase &mdash; replaying it buys nothing.<br/>
+          <strong>3. Your face or fingerprint</strong> stands in front of all of it &mdash; a found phone pays nobody.</p>
+          <p>That is the whole trick of tap to pay: every transaction carries <em>less</em> sensitive data than a swipe, yet proves <em>more</em>. The less there is to steal, the safer you are.</p>
+        </div></div>
+      </details>
+    </div>
+
+    <div class="model-box">
+      <p class="model-kicker">THE MENTAL MODEL</p>
+      <h4>Your card number never travels</h4>
+      <p>Forget the five runners for a second &mdash; the entire system is built around one idea: <strong>the number that moves is never the number that matters</strong>. Your phone wears a disposable mask (the token), speaks a one-time password (the cryptogram), and your real card number sits in a vault at your bank the whole time.</p>
+      <p>Notice how this connects to Sector&nbsp;01: the vault on your phone is a <em>chip</em> (the Secure Element), the conversation is a <em>radio</em> (the NFC controller), and the whole thing only works because semiconductors made trust fit in your pocket.</p>
+    </div>
+
+    <p class="figure-label" style="margin:36px 0 14px">MORE EVERYDAY TECH &mdash; COMING SOON</p>
+    <article class="roadmap-card"><span class="coming">Up next</span><h3>Your curiosity picks the queue</h3><p>Face&nbsp;ID, AirDrop, GPS, QR codes &mdash; whatever familiar magic you want demystified next.</p></article>
+  </section>
+</div>
+<!-- SUMMARY: Sector 09 "Everyday Tech" first entry: "Tap to Pay" — 6 beginner-friendly steps (NFC handshake, biometric unlock, tokenization/DPAN+cryptogram, Secure Element vs HCE, the 5-party 2-second relay, why it beats magstripe), exactly 5 stats (~4cm, 13.56MHz, ~1-2s, 0 card numbers sent, 1 token per device), 2 inline SVGs (travels-vs-stays diagram, tap relay flow) in site dark palette, company panels naming Apple/Google/NXP/Infineon/Visa/Mastercard with countries, a "your card number never travels" mental-model box tying back to Sector 01, plus a "coming soon" roadmap card for future entries. No external URLs, no JS/CSS, all jargon unpacked inline. -->
   </main>
 
   <footer><div class="wrap">Last updated October 2, 2026 · Sector 01 (Semiconductors): 8 of 8 chapters complete.</div></footer>

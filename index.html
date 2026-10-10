@@ -2637,12 +2637,870 @@
 
 <section class="panel" data-sector="semiconductors" id="panel-beyond" role="tabpanel" aria-labelledby="tab-beyond" data-panel="beyond" hidden><div class="panel-head"><div><p class="chapter-label">Research tracks</p><h2>Beyond the Chip</h2><p class="panel-intro">The moats around the moats — photonics, power semis, data centers, energy, and the software underneath it all.</p></div></div>
       <div class="details-stack">
-        <details><summary>Photonics — light instead of copper</summary><div class="detail-body"><p><strong>Why it matters:</strong> as AI clusters scale, moving bits with photons (silicon photonics, co-packaged optics) beats copper on power and distance. The interconnect bottleneck is becoming an optics problem.</p><p><strong>The moat question:</strong> who owns the optical interconnect — transceiver incumbents (Coherent, Lumentum), networking giants (Broadcom, Marvell), or startups (Ayar Labs, Lightmatter, Celestial AI)?</p><p><strong>Names to know:</strong> Broadcom, Marvell, Coherent, Lumentum, Ayar Labs, Lightmatter.</p></div></details>
-        <details><summary>Power semis — SiC &amp; GaN</summary><div class="detail-body"><p><strong>Why it matters:</strong> silicon carbide and gallium nitride run EVs, fast chargers, solar inverters, and grid gear — anywhere power is converted. SiC boules are grown like Czochralski crystals: same crystal-pulling religion, much harder material.</p><p><strong>The moat question:</strong> substrate quality and scale — who can grow big, defect-free SiC cheapest?</p><p><strong>Names to know:</strong> Wolfspeed, Infineon, STMicroelectronics, ROHM, Onsemi.</p></div></details>
-        <details><summary>Data centers — where the chips go to work</summary><div class="detail-body"><p><strong>Why it matters:</strong> every AI accelerator ends up here. Hyperscalers (AWS, Azure, GCP) plus neoclouds (CoreWeave, Nebius) are racing to deploy GPUs faster than anyone can build power for them.</p><p><strong>The moat question:</strong> is the moat scale, power contracts, or software orchestration — and do the neoclouds survive the build-out?</p><p><strong>Names to know:</strong> Amazon/AWS, Microsoft/Azure, Alphabet/GCP, CoreWeave, Nebius.</p></div></details>
+        <details><summary>Photonics — light instead of copper</summary><div class="detail-body">
+      <figure class="inline-figure">
+        <figcaption class="figure-label">THE WHOLE IDEA — COPPER VS LIGHT BETWEEN TWO GPUs</figcaption>
+        <svg viewBox="0 0 760 360" role="img" aria-label="Diagram: electrical path through copper burns power and dies after about a meter at 224G per lane; optical path converts electrical ones and zeros to light pulses via a modulator and laser, carries them through fiber for kilometers, and converts them back with a photodetector" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+          <g font-family="system-ui,sans-serif" text-anchor="middle">
+            <text x="380" y="28" fill="#aeb7c2" font-size="13" font-weight="700">MOVING DATA BETWEEN TWO GPUs — COPPER VS LIGHT</text>
+            <text x="380" y="58" fill="#ff9e64" font-size="12" font-weight="700">ELECTRICAL: COPPER</text>
+            <rect x="20" y="68" width="100" height="66" rx="8" fill="#10161e" stroke="#ff9e64" stroke-width="2"/>
+            <text x="70" y="97" fill="#ff9e64" font-size="13" font-weight="700">GPU</text>
+            <text x="70" y="119" fill="#aeb7c2" font-size="11">1s/0s out</text>
+            <line x1="120" y1="101" x2="560" y2="101" stroke="#ff9e64" stroke-width="10" stroke-linecap="round"/>
+            <path d="M200,88 q4,-6 0,-12 q-4,-6 0,-10" stroke="#ff9e64" stroke-width="2" fill="none" opacity="0.8"/>
+            <path d="M290,88 q4,-6 0,-12 q-4,-6 0,-10" stroke="#ff9e64" stroke-width="2" fill="none" opacity="0.8"/>
+            <path d="M380,88 q4,-6 0,-12 q-4,-6 0,-10" stroke="#ff9e64" stroke-width="2" fill="none" opacity="0.8"/>
+            <path d="M470,88 q4,-6 0,-12 q-4,-6 0,-10" stroke="#ff9e64" stroke-width="2" fill="none" opacity="0.8"/>
+            <text x="340" y="132" fill="#ff9e64" font-size="12">copper trace / DAC — power burned fighting resistance</text>
+            <text x="340" y="152" fill="#aeb7c2" font-size="11.5">~1 m passive reach at 224G/lane · longer runs need power-hungry retimers</text>
+            <rect x="560" y="68" width="100" height="66" rx="8" fill="#10161e" stroke="#ff9e64" stroke-width="2"/>
+            <text x="610" y="97" fill="#ff9e64" font-size="13" font-weight="700">GPU</text>
+            <text x="610" y="119" fill="#aeb7c2" font-size="11">1s/0s in</text>
+            <line x1="20" y1="186" x2="740" y2="186" stroke="#2a3542" stroke-width="1" stroke-dasharray="6,5"/>
+            <text x="380" y="212" fill="#58a6ff" font-size="12" font-weight="700">OPTICAL: LIGHT</text>
+            <rect x="20" y="222" width="90" height="66" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="65" y="251" fill="#58a6ff" font-size="13" font-weight="700">GPU</text>
+            <text x="65" y="273" fill="#aeb7c2" font-size="11">1s/0s out</text>
+            <line x1="110" y1="255" x2="120" y2="255" stroke="#58a6ff" stroke-width="2"/><polygon points="120,255 113,251 113,259" fill="#58a6ff"/>
+            <rect x="122" y="222" width="104" height="66" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="174" y="247" fill="#58a6ff" font-size="11" font-weight="700">MODULATOR</text>
+            <text x="174" y="269" fill="#aeb7c2" font-size="10.5">1s/0s → light</text>
+            <line x1="226" y1="255" x2="236" y2="255" stroke="#58a6ff" stroke-width="2"/><polygon points="236,255 229,251 229,259" fill="#58a6ff"/>
+            <circle cx="264" cy="255" r="26" fill="#0b1016" stroke="#f5a623" stroke-width="2"/>
+            <text x="264" y="259" fill="#f5a623" font-size="10.5" font-weight="700">LASER</text>
+            <text x="264" y="296" fill="#aeb7c2" font-size="10.5">the light source</text>
+            <path d="M292,255 q18,-16 36,0 t36,0 t36,0 t36,0 t36,0 t36,0 t36,0 t36,0" stroke="#f5a623" stroke-width="4" fill="none"/>
+            <text x="436" y="308" fill="#aeb7c2" font-size="11.5">glass fiber — light travels kilometers with tiny loss</text>
+            <text x="436" y="328" fill="#f5a623" font-size="11.5">pulses of light = the 1s and 0s</text>
+            <line x1="580" y1="255" x2="590" y2="255" stroke="#58a6ff" stroke-width="2"/><polygon points="590,255 583,251 583,259" fill="#58a6ff"/>
+            <rect x="592" y="222" width="104" height="66" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+            <text x="644" y="247" fill="#7ee787" font-size="10" font-weight="700">PHOTODETECTOR</text>
+            <text x="644" y="269" fill="#aeb7c2" font-size="10.5">light → 1s/0s</text>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="stats" aria-label="Key numbers">
+        <div class="stat"><strong>~1 m</strong><span>passive copper reach at 224G/lane</span></div>
+        <div class="stat"><strong>14&ndash;16 W</strong><span>power per 800G pluggable optical module</span></div>
+        <div class="stat"><strong>up to ~70%</strong><span>optics power cut with co-packaged optics</span></div>
+        <div class="stat"><strong>43% &rarr; 76%</strong><span>silicon-photonic share of transceivers, 2025&rarr;2030</span></div>
+      </div>
+
+      <div class="step-stack">
+        <details class="step-card">
+          <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">The idea</span><span class="step-name">Silicon photonics: light plumbing built like chips</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p><strong>Silicon photonics</strong> is exactly what it sounds like: making light-guiding components on silicon wafers, using the same fab processes that print transistors. Instead of only etching transistors, the fab patterns:</p>
+            <p><strong>Waveguides</strong> — light pipes. A stripe of silicon surrounded by glass steers light the way a copper wire steers electrons; light bounces along inside it instead of leaking out. <strong>Modulators</strong> — devices that flicker a steady laser beam into pulses, turning electrical 1s and 0s into flashes of light. <strong>Photodetectors</strong> — devices that catch those flashes and turn them back into electrical 1s and 0s. The <strong>laser</strong> itself — the light source — is usually bolted on from outside, because plain silicon is terrible at making light.</p>
+            <p>This matters because fabs are the cheapest precision factories on Earth. If the light plumbing can be printed with the same lithography as chips, optics stops being hand-assembled jewelry and starts scaling like semiconductors. TSMC, GlobalFoundries, Intel, and STMicroelectronics all run silicon photonics lines for exactly this reason.</p>
+            <p class="plain-note"><strong>In plain English:</strong> print the fiber-optic kit — pipes, flickerers, catchers — directly onto a chip, and light becomes a mass-produced chip component.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">The mechanism</span><span class="step-name">One optical link, and why co-packaging wins</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p>Why light beats copper: a copper wire is a resistor. At the frequencies modern links need (100&nbsp;GHz+ for 800G), current crowds into a paper-thin skin of the conductor — the <strong>skin effect</strong> — so resistance skyrockets and most of the signal&rsquo;s energy dies as heat within meters. Glass fiber barely attenuates at all, which is why your internet crosses oceans on light.</p>
+            <p>AI training made this a crisis. A cluster of tens of thousands of GPUs must constantly exchange data — every training step syncs results across the whole machine — and copper simply cannot reach across a data hall at 224 gigabits per lane. <strong>The interconnect bottleneck is becoming an optics problem.</strong> Here is the anatomy of one optical link:</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">ANATOMY OF ONE OPTICAL LINK</figcaption>
+              <svg viewBox="0 0 720 280" role="img" aria-label="Diagram: four stages of an optical link — laser makes steady light from electricity, modulator flickers it into ones and zeros, fiber carries the pulses for kilometers, photodetector turns light back into electricity" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif" text-anchor="middle">
+                  <text x="360" y="28" fill="#aeb7c2" font-size="13" font-weight="700">ANATOMY OF ONE OPTICAL LINK</text>
+                  <rect x="30" y="48" width="150" height="140" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                  <text x="105" y="78" fill="#f5a623" font-size="12" font-weight="700">1 · LASER</text>
+                  <text x="105" y="106" fill="#aeb7c2" font-size="11">shines a steady</text>
+                  <text x="105" y="124" fill="#aeb7c2" font-size="11">beam of light</text>
+                  <text x="105" y="150" fill="#f5a623" font-size="10.5">in: electricity</text>
+                  <text x="105" y="168" fill="#f5a623" font-size="10.5">out: steady light</text>
+                  <rect x="200" y="48" width="150" height="140" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                  <text x="275" y="78" fill="#58a6ff" font-size="12" font-weight="700">2 · MODULATOR</text>
+                  <text x="275" y="106" fill="#aeb7c2" font-size="11">flickers the light</text>
+                  <text x="275" y="124" fill="#aeb7c2" font-size="11">into 1s and 0s</text>
+                  <text x="275" y="150" fill="#58a6ff" font-size="10.5">in: light + data</text>
+                  <text x="275" y="168" fill="#58a6ff" font-size="10.5">out: pulsing light</text>
+                  <rect x="370" y="48" width="150" height="140" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                  <text x="445" y="78" fill="#f5a623" font-size="12" font-weight="700">3 · FIBER</text>
+                  <text x="445" y="106" fill="#aeb7c2" font-size="11">carries the pulses</text>
+                  <text x="445" y="124" fill="#aeb7c2" font-size="11">for kilometers</text>
+                  <text x="445" y="150" fill="#f5a623" font-size="10.5">converts: nothing —</text>
+                  <text x="445" y="168" fill="#f5a623" font-size="10.5">pure transport</text>
+                  <rect x="540" y="48" width="150" height="140" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                  <text x="615" y="78" fill="#7ee787" font-size="11.5" font-weight="700">4 · PHOTODETECTOR</text>
+                  <text x="615" y="106" fill="#aeb7c2" font-size="11">catches the light,</text>
+                  <text x="615" y="124" fill="#aeb7c2" font-size="11">emits 1s and 0s</text>
+                  <text x="615" y="150" fill="#7ee787" font-size="10.5">in: pulsing light</text>
+                  <text x="615" y="168" fill="#7ee787" font-size="10.5">out: electricity</text>
+                  <g stroke="#aeb7c2" stroke-width="2" fill="none">
+                    <line x1="180" y1="118" x2="194" y2="118"/><polygon points="194,118 187,113 187,123" fill="#aeb7c2" stroke="none"/>
+                    <line x1="350" y1="118" x2="364" y2="118"/><polygon points="364,118 357,113 357,123" fill="#aeb7c2" stroke="none"/>
+                    <line x1="520" y1="118" x2="534" y2="118"/><polygon points="534,118 527,113 527,123" fill="#aeb7c2" stroke="none"/>
+                  </g>
+                  <text x="360" y="228" fill="#aeb7c2" font-size="12.5">One full trip: electrical signal → pulses of light → electrical signal.</text>
+                  <text x="360" y="252" fill="#58a6ff" font-size="11.5">The chip at each end only ever speaks electricity — light is just the carrier.</text>
+                </g>
+              </svg>
+            </figure>
+            <p>Now the power problem. The classic way to attach optics is a <strong>pluggable transceiver</strong>: a module the size of a finger that plugs into the switch&rsquo;s faceplate. But the switch ASIC sits deep inside the box, so the signal travels centimeters of copper <em>first</em>, degrades, and needs a power-hungry <strong>DSP</strong> (digital signal processor — a chip that cleans up distorted signals) inside the module. That is why an 800G module burns 14–16&nbsp;W.</p>
+            <p><strong>Co-packaged optics (CPO)</strong> moves the optics into the same package as the ASIC. The copper run shrinks from centimeters to millimeters, the DSP can be dropped or shrunk, and power falls 30–50% at the system level — Broadcom&rsquo;s Bailly CPO switch claims up to ~70% less optics power than pluggables. NVIDIA&rsquo;s Spectrum-X CPO switch (built with TSMC) is now in volume production. The faceplate modules don&rsquo;t disappear overnight — they are swappable and universal — but the direction is clear: optics is moving <em>into</em> the package.</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">WHY CO-PACKAGED OPTICS SAVES POWER</figcaption>
+              <svg viewBox="0 0 720 330" role="img" aria-label="Diagram: in a pluggable transceiver design, the signal travels a long copper run from the switch ASIC to a faceplate module containing a DSP and lasers burning 14 to 16 watts; in co-packaged optics, the optical engine sits in the same package as the ASIC with only millimeters of copper, cutting optics power by up to 70 percent" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif" text-anchor="middle">
+                  <text x="360" y="28" fill="#aeb7c2" font-size="13" font-weight="700">WHY CO-PACKAGED OPTICS SAVES POWER</text>
+                  <rect x="20" y="48" width="320" height="238" rx="10" fill="#10161e" stroke="#ff9e64" stroke-width="2"/>
+                  <text x="180" y="72" fill="#ff9e64" font-size="12" font-weight="700">PLUGGABLE TRANSCEIVER</text>
+                  <rect x="42" y="100" width="96" height="84" rx="8" fill="#0b1016" stroke="#ff9e64" stroke-width="2"/>
+                  <text x="90" y="132" fill="#ff9e64" font-size="11" font-weight="700">SWITCH</text>
+                  <text x="90" y="150" fill="#ff9e64" font-size="11" font-weight="700">ASIC</text>
+                  <text x="90" y="168" fill="#aeb7c2" font-size="10.5">electrical</text>
+                  <line x1="138" y1="142" x2="238" y2="142" stroke="#ff9e64" stroke-width="8" stroke-linecap="round"/>
+                  <text x="188" y="120" fill="#ff9e64" font-size="10.5">long copper run</text>
+                  <text x="188" y="172" fill="#aeb7c2" font-size="10.5">wastes power</text>
+                  <rect x="238" y="96" width="84" height="92" rx="8" fill="#0b1016" stroke="#ff9e64" stroke-width="2"/>
+                  <text x="280" y="120" fill="#ff9e64" font-size="10.5" font-weight="700">MODULE</text>
+                  <text x="280" y="140" fill="#aeb7c2" font-size="10.5">DSP + lasers</text>
+                  <text x="280" y="164" fill="#ff9e64" font-size="12" font-weight="700">~14–16 W</text>
+                  <line x1="322" y1="142" x2="338" y2="142" stroke="#f5a623" stroke-width="3"/>
+                  <text x="180" y="222" fill="#aeb7c2" font-size="11">optics sit far from the ASIC —</text>
+                  <text x="180" y="242" fill="#aeb7c2" font-size="11">every bit travels copper first</text>
+                  <rect x="380" y="48" width="320" height="238" rx="10" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                  <text x="540" y="72" fill="#7ee787" font-size="12" font-weight="700">CO-PACKAGED OPTICS</text>
+                  <rect x="404" y="100" width="272" height="88" rx="8" fill="#0b1016" stroke="#7ee787" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <rect x="420" y="118" width="104" height="52" rx="6" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                  <text x="472" y="148" fill="#7ee787" font-size="10" font-weight="700">SWITCH ASIC</text>
+                  <line x1="524" y1="144" x2="546" y2="144" stroke="#7ee787" stroke-width="4" stroke-linecap="round"/>
+                  <text x="535" y="134" fill="#7ee787" font-size="10">mm</text>
+                  <rect x="546" y="118" width="104" height="52" rx="6" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                  <text x="598" y="141" fill="#7ee787" font-size="9.5" font-weight="700">OPTICAL ENGINE</text>
+                  <text x="598" y="158" fill="#aeb7c2" font-size="9.5">lasers + detectors</text>
+                  <path d="M650,144 q12,-12 25,0 t25,0" stroke="#f5a623" stroke-width="3" fill="none"/>
+                  <text x="540" y="222" fill="#aeb7c2" font-size="11">optics ride next to the ASIC —</text>
+                  <text x="540" y="242" fill="#aeb7c2" font-size="11">almost no copper to cross</text>
+                  <text x="540" y="264" fill="#7ee787" font-size="11" font-weight="700">up to ~70% less optics power</text>
+                  <text x="360" y="314" fill="#aeb7c2" font-size="12.5">The whole trick: shorter copper = less energy per bit.</text>
+                </g>
+              </svg>
+            </figure>
+            <p class="plain-note"><strong>In plain English:</strong> pluggables make electricity run a copper marathon before it is allowed to become light. Co-packaged optics moves the starting line to the chip itself.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">The stakes</span><span class="step-name">Who owns the optical interconnect?</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p><strong>Why it matters:</strong> as AI clusters scale, moving bits with photons (silicon photonics, co-packaged optics) beats copper on power and distance. The interconnect bottleneck is becoming an optics problem.</p>
+            <p><strong>The moat question:</strong> who owns the optical interconnect — transceiver incumbents (Coherent, Lumentum), networking giants (Broadcom, Marvell), or startups (Ayar Labs, Lightmatter, Celestial AI)?</p>
+            <p><strong>Names to know:</strong> Broadcom, Marvell, Coherent, Lumentum, Ayar Labs, Lightmatter.</p>
+            <p>Each camp has a real edge. The <strong>transceiver incumbents</strong> own the hard manufacturing — lasers, precision optics, hermetic packaging — plus decades of qualification relationships with hyperscalers. The <strong>networking giants</strong> own the switch ASIC and the DSP/SerDes inside every module, so they can bundle optics with the switch and define the architecture (that is Broadcom&rsquo;s CPO play). The <strong>startups</strong> own the new architectures: Ayar Labs puts optical I/O chiplets inside the compute package, Lightmatter builds photonic chips that do math with light itself.</p>
+            <p>The fight is really about where the value pools: if optics becomes a <em>feature of the switch</em>, the networking giants win; if it stays a <em>standalone component market</em>, the incumbents win; if light replaces electrical links <em>inside</em> the machine, the startups rewrite the map.</p>
+          </div></div>
+        </details>
+      </div>
+
+      <aside class="company-panel">
+        <h4>Companies in photonics</h4>
+        <p><strong>Broadcom</strong> (USA) — networking giant; its Bailly co-packaged-optics switch (up to ~70% less optics power than pluggables) is the industry&rsquo;s biggest CPO bet, and its DSP chips sit inside most modules. <strong>Marvell</strong> (USA) — networking giant; optical DSPs and PAM4 SerDes that power pluggable modules and active copper cables. <strong>Coherent</strong> (USA) — transceiver incumbent (absorbed Finisar); lasers and 800G optical modules for AI clusters. <strong>Lumentum</strong> (USA) — transceiver incumbent; lasers and optical components for datacenter and telecom links. <strong>Ayar Labs</strong> (USA) — startup; optical I/O chiplets that swap electrical chip-to-chip links for in-package light. <strong>Lightmatter</strong> (USA) — startup; photonic chips for AI compute and optical interconnect, doing math with meshes of light.</p>
+      </aside>
+
+      <details class="video-toggle"><summary><span class="vt-caret">▶</span><span class="vt-text">Show video &mdash; Silicon Photonics: The Next Silicon Revolution?</span></summary>
+<figure class="inline-figure">
+  <figcaption class="figure-label">WATCH IT HAPPEN &mdash; WHY FABS ARE THE NATURAL HOME FOR LIGHT</figcaption>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/29aTqLvRia8" title="Silicon Photonics: The Next Silicon Revolution?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <p style="color:#aeb7c2;font-size:13px;margin:8px 2px 0">Asianometry&rsquo;s tour of the field &mdash; what silicon photonics is, why it maps so well onto CMOS fabs, and how far the technology could go. <a style="color:#f5a623" href="https://www.youtube.com/watch?v=29aTqLvRia8" target="_blank" rel="noopener">Watch on YouTube.</a></p>
+</figure>
+</details>
+</div></details>
+        <details><summary>Power semis — SiC &amp; GaN</summary><div class="detail-body">
+      <figure class="inline-figure">
+        <figcaption class="figure-label">FOLLOW THE ELECTRONS — EVERY CONVERSION IS A SWITCH</figcaption>
+        <svg viewBox="0 0 680 292" role="img" aria-label="Diagram: grid AC to fast charger to battery to traction inverter to motor, plus solar and server power chains, marking each conversion point where a power semiconductor switches" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+          <g font-family="system-ui,sans-serif" text-anchor="middle">
+            <text x="340" y="24" fill="#f5a623" font-size="13" font-weight="700">FOLLOW THE ELECTRONS — EVERY CONVERSION IS A SWITCH</text>
+            <polygon points="195,30 202,30 198,36 203,36 194,48 197,40 193,40" fill="#ff9e64"/>
+            <polygon points="485,30 492,30 488,36 493,36 484,48 487,40 483,40" fill="#ff9e64"/>
+            <rect x="12" y="52" width="96" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="60" y="80" fill="#edf1f5" font-size="12" font-weight="700">GRID</text>
+            <text x="60" y="102" fill="#aeb7c2" font-size="10.5">230 V AC</text>
+            <line x1="110" y1="84" x2="122" y2="84" stroke="#f5a623" stroke-width="2"/><polygon points="122,84 113,79 113,89" fill="#f5a623"/>
+            <rect x="124" y="52" width="150" height="64" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="199" y="80" fill="#f5a623" font-size="12" font-weight="700">FAST CHARGER</text>
+            <text x="199" y="102" fill="#aeb7c2" font-size="10.5">AC → DC · 800 V</text>
+            <line x1="276" y1="84" x2="288" y2="84" stroke="#f5a623" stroke-width="2"/><polygon points="288,84 279,79 279,89" fill="#f5a623"/>
+            <rect x="290" y="52" width="104" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="342" y="80" fill="#edf1f5" font-size="12" font-weight="700">EV BATTERY</text>
+            <text x="342" y="102" fill="#aeb7c2" font-size="10.5">DC pack</text>
+            <line x1="396" y1="84" x2="408" y2="84" stroke="#f5a623" stroke-width="2"/><polygon points="408,84 399,79 399,89" fill="#f5a623"/>
+            <rect x="410" y="52" width="158" height="64" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="489" y="80" fill="#f5a623" font-size="12" font-weight="700">TRACTION INVERTER</text>
+            <text x="489" y="102" fill="#aeb7c2" font-size="10.5">DC → AC</text>
+            <line x1="570" y1="84" x2="582" y2="84" stroke="#f5a623" stroke-width="2"/><polygon points="582,84 573,79 573,89" fill="#f5a623"/>
+            <rect x="584" y="52" width="84" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="626" y="80" fill="#edf1f5" font-size="12" font-weight="700">MOTOR</text>
+            <text x="626" y="102" fill="#aeb7c2" font-size="10.5">AC</text>
+            <polygon points="219,150 222,150 222,156 226,156 214,168 217,160 213,160" fill="#ff9e64"/>
+            <polygon points="598,150 601,150 601,156 605,156 593,168 596,160 592,160" fill="#ff9e64"/>
+            <rect x="12" y="170" width="120" height="60" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="72" y="196" fill="#edf1f5" font-size="12" font-weight="700">SOLAR PANEL</text>
+            <text x="72" y="218" fill="#aeb7c2" font-size="10.5">DC</text>
+            <line x1="134" y1="200" x2="146" y2="200" stroke="#f5a623" stroke-width="2"/><polygon points="146,200 137,195 137,205" fill="#f5a623"/>
+            <rect x="148" y="170" width="150" height="60" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="223" y="196" fill="#f5a623" font-size="12" font-weight="700">SOLAR INVERTER</text>
+            <text x="223" y="218" fill="#aeb7c2" font-size="10.5">DC → AC</text>
+            <line x1="300" y1="200" x2="312" y2="200" stroke="#f5a623" stroke-width="2"/><polygon points="312,200 303,195 303,205" fill="#f5a623"/>
+            <text x="365" y="204" fill="#aeb7c2" font-size="11">into the grid</text>
+            <rect x="424" y="170" width="96" height="60" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="472" y="196" fill="#edf1f5" font-size="12" font-weight="700">GRID</text>
+            <text x="472" y="218" fill="#aeb7c2" font-size="10.5">AC in</text>
+            <line x1="522" y1="200" x2="534" y2="200" stroke="#f5a623" stroke-width="2"/><polygon points="534,200 525,195 525,205" fill="#f5a623"/>
+            <rect x="536" y="170" width="132" height="60" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="602" y="196" fill="#f5a623" font-size="12" font-weight="700">SERVER PSU · OBC</text>
+            <text x="602" y="218" fill="#aeb7c2" font-size="10.5">AC → DC · 48 V</text>
+            <text x="340" y="258" fill="#aeb7c2" font-size="11.5">⚡ marks every point where a power semiconductor does the switching</text>
+            <text x="340" y="280" fill="#aeb7c2" font-size="11.5">SiC takes the high-voltage jobs · GaN takes the high-frequency ones</text>
+          </g>
+        </svg>
+      </figure>
+      <p><strong>Why it matters:</strong> silicon carbide and gallium nitride run EVs, fast chargers, solar inverters, and grid gear — anywhere power is converted. SiC boules are grown like Czochralski crystals: same crystal-pulling religion, much harder material.</p>
+      <p><strong>Names to know:</strong> Wolfspeed, Infineon, STMicroelectronics, ROHM, Onsemi.</p>
+
+      <div class="stats" aria-label="Key numbers">
+        <div class="stat"><strong>1.1 / 3.3 / 3.4 eV</strong><span>bandgap: Si vs SiC vs GaN</span></div>
+        <div class="stat"><strong>10&times;</strong><span>higher voltage SiC blocks vs silicon</span></div>
+        <div class="stat"><strong>~7%</strong><span>extra EV range from a SiC traction inverter</span></div>
+        <div class="stat"><strong>~$3B</strong><span>SiC power market, 2025 &mdash; growing ~27%/yr</span></div>
+      </div>
+
+      <div class="step-stack">
+        <details class="step-card">
+          <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">The switch</span><span class="step-name">Electricity&rsquo;s traffic cop</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p>A <strong>power semiconductor</strong> is a switch built for real electricity, not data. Its job is to <strong>convert and condition power</strong>: AC to DC and back, voltage up or down, the waveform cleaned up along the way. Logic chips <em>think</em>; power semis <em>muscle</em>. Every wall charger, EV, solar inverter, and server rack is full of them.</p>
+            <p>The number that decides everything is <strong>bandgap</strong> — the energy an electron needs to jump into conduction, measured in electron-volts (eV). Silicon&rsquo;s narrow 1.1&nbsp;eV gap breaks down at a few hundred volts and leaks when hot. SiC (3.3&nbsp;eV) and GaN (3.4&nbsp;eV) are <strong>wide-bandgap</strong> materials: the same device stands off kilovolts, runs hotter, and switches faster — so less energy is wasted as heat at every conversion point in the diagram above.</p>
+            <p class="plain-note"><strong>In plain English:</strong> bandgap is how much electrical pressure the material can take before it gives way. Wider gap, tougher material, less energy lost.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">Why wide wins</span><span class="step-name">What the bandgap buys you — and the boule behind it</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p>The bars tell the story. Going from 1.1 to 3.3+&nbsp;eV makes the <strong>breakdown field ~10&times; stronger</strong> — so a SiC device blocks the same voltage with much thinner layers. Thinner layers mean <strong>lower on-resistance</strong>: less energy burned just conducting current. And both materials switch far faster than silicon: less energy burned <em>switching</em>. Two kinds of waste, both slashed.</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">BANDGAP: THE NUMBER THAT DECIDES EVERYTHING</figcaption>
+              <svg viewBox="0 0 640 300" role="img" aria-label="Bar chart comparing bandgaps: silicon 1.1 eV, silicon carbide 3.3 eV, gallium nitride 3.4 eV" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif">
+                  <text x="320" y="24" text-anchor="middle" fill="#f5a623" font-size="13" font-weight="700">BANDGAP: THE NUMBER THAT DECIDES EVERYTHING</text>
+                  <text x="16" y="81" fill="#edf1f5" font-size="12" font-weight="700">Si — silicon</text>
+                  <rect x="170" y="62" width="129" height="24" rx="5" fill="#58a6ff"/>
+                  <text x="309" y="81" fill="#edf1f5" font-size="12" font-weight="700">1.1 eV</text>
+                  <text x="170" y="102" fill="#aeb7c2" font-size="10.5">narrow gap — leaks at high voltage, but it&rsquo;s today&rsquo;s workhorse</text>
+                  <text x="16" y="141" fill="#edf1f5" font-size="12" font-weight="700">SiC — silicon carbide</text>
+                  <rect x="170" y="122" width="384" height="24" rx="5" fill="#f5a623"/>
+                  <text x="564" y="141" fill="#f5a623" font-size="12" font-weight="700">3.3 eV</text>
+                  <text x="170" y="162" fill="#aeb7c2" font-size="10.5">stands off kilovolts — EV inverters, fast chargers, grid gear</text>
+                  <text x="16" y="201" fill="#edf1f5" font-size="12" font-weight="700">GaN — gallium nitride</text>
+                  <rect x="170" y="182" width="400" height="24" rx="5" fill="#7ee787"/>
+                  <text x="580" y="201" fill="#7ee787" font-size="12" font-weight="700">3.4 eV</text>
+                  <text x="170" y="222" fill="#aeb7c2" font-size="10.5">the fastest switcher — phone chargers, server PSUs, RF</text>
+                  <rect x="10" y="244" width="200" height="44" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="1.5"/>
+                  <text x="110" y="263" text-anchor="middle" fill="#edf1f5" font-size="11" font-weight="700">BLOCKS 10&times; THE VOLTAGE</text>
+                  <text x="110" y="281" text-anchor="middle" fill="#aeb7c2" font-size="10">thinner layers, lower resistance</text>
+                  <rect x="220" y="244" width="200" height="44" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="1.5"/>
+                  <text x="320" y="263" text-anchor="middle" fill="#edf1f5" font-size="11" font-weight="700">RUNS HOTTER</text>
+                  <text x="320" y="281" text-anchor="middle" fill="#aeb7c2" font-size="10">smaller heatsinks and cooling</text>
+                  <rect x="430" y="244" width="200" height="44" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="1.5"/>
+                  <text x="530" y="263" text-anchor="middle" fill="#edf1f5" font-size="11" font-weight="700">SWITCHES FASTER</text>
+                  <text x="530" y="281" text-anchor="middle" fill="#aeb7c2" font-size="10">less energy lost as heat</text>
+                </g>
+              </svg>
+            </figure>
+            <p>GaN has a different origin story: it is usually grown as a <strong>thin film on ordinary silicon wafers</strong>, not as its own crystal — so it piggybacks on existing silicon fabs and scales cheaply, but it tops out around the 650&nbsp;V class. SiC needs its own boule — and that is where the industry&rsquo;s bottleneck lives.</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">THE HARD PART: GROWING THE CRYSTAL</figcaption>
+              <svg viewBox="0 0 680 310" role="img" aria-label="Diagram contrasting silicon Czochralski crystal pulling with SiC PVT sublimation growth" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif" text-anchor="middle">
+                  <text x="340" y="24" fill="#f5a623" font-size="13" font-weight="700">THE HARD PART: GROWING THE CRYSTAL</text>
+                  <text x="175" y="52" fill="#58a6ff" font-size="11" font-weight="700">SILICON — CZOCHRALSKI (CH. 1)</text>
+                  <text x="505" y="52" fill="#f5a623" font-size="11" font-weight="700">SiC — PVT SUBLIMATION</text>
+                  <rect x="115" y="190" width="120" height="64" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                  <rect x="123" y="190" width="104" height="16" fill="#ff9e64" opacity="0.85"/>
+                  <rect x="155" y="70" width="40" height="124" fill="#0b1016" stroke="#58a6ff" stroke-width="2"/>
+                  <rect x="168" y="58" width="14" height="12" fill="#58a6ff"/>
+                  <line x1="218" y1="120" x2="218" y2="82" stroke="#58a6ff" stroke-width="2"/><polygon points="218,82 212,92 224,92" fill="#58a6ff"/>
+                  <text x="262" y="104" fill="#aeb7c2" font-size="10">seed pulled up</text>
+                  <text x="262" y="120" fill="#aeb7c2" font-size="10">mm per minute</text>
+                  <text x="175" y="272" fill="#aeb7c2" font-size="10.5">molten Si · 1,415 °C — freezes onto the seed</text>
+                  <rect x="430" y="64" width="150" height="190" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="2"/>
+                  <rect x="490" y="76" width="30" height="12" fill="#f5a623"/>
+                  <text x="528" y="86" fill="#aeb7c2" font-size="10" text-anchor="start">seed</text>
+                  <rect x="482" y="92" width="46" height="44" fill="#0b1016" stroke="#f5a623" stroke-width="2"/>
+                  <text x="505" y="154" fill="#aeb7c2" font-size="10">grows from vapor</text>
+                  <line x1="465" y1="220" x2="465" y2="152" stroke="#ff9e64" stroke-width="1.5" stroke-dasharray="5,4"/><polygon points="465,152 461,160 469,160" fill="#ff9e64"/>
+                  <line x1="505" y1="220" x2="505" y2="152" stroke="#ff9e64" stroke-width="1.5" stroke-dasharray="5,4"/><polygon points="505,152 501,160 509,160" fill="#ff9e64"/>
+                  <line x1="545" y1="220" x2="545" y2="152" stroke="#ff9e64" stroke-width="1.5" stroke-dasharray="5,4"/><polygon points="545,152 541,160 549,160" fill="#ff9e64"/>
+                  <circle cx="452" cy="238" r="5" fill="#ff9e64"/><circle cx="467" cy="238" r="5" fill="#ff9e64"/><circle cx="482" cy="238" r="5" fill="#ff9e64"/><circle cx="497" cy="238" r="5" fill="#ff9e64"/><circle cx="512" cy="238" r="5" fill="#ff9e64"/><circle cx="527" cy="238" r="5" fill="#ff9e64"/><circle cx="542" cy="238" r="5" fill="#ff9e64"/><circle cx="557" cy="238" r="5" fill="#ff9e64"/>
+                  <circle cx="459" cy="248" r="5" fill="#ff9e64"/><circle cx="474" cy="248" r="5" fill="#ff9e64"/><circle cx="489" cy="248" r="5" fill="#ff9e64"/><circle cx="504" cy="248" r="5" fill="#ff9e64"/><circle cx="519" cy="248" r="5" fill="#ff9e64"/><circle cx="534" cy="248" r="5" fill="#ff9e64"/><circle cx="549" cy="248" r="5" fill="#ff9e64"/>
+                  <text x="505" y="272" fill="#aeb7c2" font-size="10.5">SiC powder · ~2,000 °C — it never melts</text>
+                  <text x="340" y="296" fill="#aeb7c2" font-size="11.5">Silicon freezes out of liquid pulled in days; SiC condenses out of vapor over weeks — hundreds of times slower</text>
+                </g>
+              </svg>
+            </figure>
+            <p>In <strong>PVT (physical vapor transport)</strong>, SiC powder is heated past ~2,000&nbsp;°C until it <strong>sublimes</strong> — turns straight from solid to vapor, because SiC has no usable liquid phase to pull from. The vapor drifts up and slowly condenses onto a cooler seed crystal. Growth runs at millimeters per <em>day</em> (Czochralski silicon pulls at millimeters per <em>minute</em>), and any defect — especially hollow <strong>micropipes</strong> — kills every die it touches. A boule takes days to weeks, and the wafer it yields is the single most expensive part of a SiC device.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">The moat</span><span class="step-name">Substrates, scale, and the 8-inch jump</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p><strong>The moat question:</strong> substrate quality and scale — who can grow big, defect-free SiC cheapest?</p>
+            <p>Sharpened: the industry grew up on 4-inch and 6-inch wafers and is now clawing its way to <strong>8-inch (200&nbsp;mm)</strong>. A bigger wafer means nearly twice the dies per boule — and cost per device falls hard. Wolfspeed, Infineon, and ST are all building 200mm SiC capacity; whoever qualifies 200mm substrates at high yield first wins the cost curve.</p>
+            <p>That is why <strong>vertical integration</strong> matters: owning your own substrate supply (Wolfspeed, ROHM) beats begging for wafers when the market is tight. And the division of labor is clean — <strong>SiC takes the high-voltage muscle</strong> (traction inverters, fast chargers, grid gear), <strong>GaN takes the high-frequency speed</strong> (onboard chargers, server PSUs, RF). Different physics, different moats, same trend: silicon is being pushed out of power conversion, one socket at a time.</p>
+          </div></div>
+        </details>
+      </div>
+
+      <aside class="company-panel">
+        <h4>The power-semi players</h4>
+        <p><strong>Wolfspeed</strong> (USA) — the SiC pure play (ex-Cree): grows its own substrates and is ramping 200mm wafer capacity at Mohawk Valley, NY. <strong>Infineon</strong> (Germany) — the automotive power giant; bought GaN Systems (2023) and is scaling SiC at Kulim, Malaysia. <strong>STMicroelectronics</strong> (Switzerland) — put SiC MOSFETs in Tesla&rsquo;s Model&nbsp;3 and ships 4th-gen STPOWER SiC. <strong>ROHM</strong> (Japan) — vertically integrated SiC pioneer via its SiCrystal wafer subsidiary. <strong>Onsemi</strong> (USA) — bought GT Advanced Technologies (2021) for substrates; its VE-Trac SiC modules powered the Mercedes VISION&nbsp;EQXX&rsquo;s 1,200&nbsp;km run.</p>
+      </aside>
+
+      <details class="video-toggle"><summary><span class="vt-caret">▶</span><span class="vt-text">Show video &mdash; Gallium Nitride: From Light to Power</span></summary>
+<figure class="inline-figure">
+  <figcaption class="figure-label">WATCH IT HAPPEN &mdash; GaN, FROM LEDS TO POWER</figcaption>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/srGmVOFpasU" title="Gallium Nitride: From Light to Power" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <p style="color:#aeb7c2;font-size:13px;margin:8px 2px 0">Asianometry traces GaN from blue LEDs to power devices &mdash; the materials science behind the bandgap jump from silicon, and why power electronics is its second act. <a style="color:#f5a623" href="https://www.youtube.com/watch?v=srGmVOFpasU" target="_blank" rel="noopener">Watch on YouTube.</a></p>
+</figure>
+</details>
+</div></details>
+        <details><summary>Data centers — where the chips go to work</summary><div class="detail-body">
+<p><strong>Why it matters:</strong> every AI accelerator ends up here. Hyperscalers (AWS, Azure, GCP) plus neoclouds (CoreWeave, Nebius) are racing to deploy GPUs faster than anyone can build power for them. This track is about the building the chips end up in — and the race to keep it fed.</p>
+<figure class="inline-figure">
+  <figcaption class="figure-label">THE AI DATA CENTER AS A SYSTEM</figcaption>
+  <svg viewBox="0 0 640 380" role="img" aria-label="Diagram: grid power flows into substation, UPS batteries, GPU racks, while a liquid cooling loop carries heat out" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+    <g font-family="system-ui,sans-serif">
+      <text x="320" y="24" text-anchor="middle" fill="#f5a623" font-size="12" font-weight="700">THE AI DATA CENTER AS A SYSTEM</text>
+      <line x1="20" y1="60" x2="596" y2="60" stroke="#f5a623" stroke-width="3"/>
+      <polygon points="596,60 588,55 588,65" fill="#f5a623"/>
+      <text x="320" y="50" text-anchor="middle" fill="#f5a623" font-size="11" font-weight="700">POWER IN</text>
+      <rect x="20" y="86" width="130" height="88" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+      <text x="85" y="110" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">GRID</text>
+      <text x="85" y="132" text-anchor="middle" fill="#aeb7c2" font-size="10.5">raw electricity</text>
+      <text x="85" y="148" text-anchor="middle" fill="#aeb7c2" font-size="10.5">from the utility</text>
+      <line x1="150" y1="130" x2="168" y2="130" stroke="#f5a623" stroke-width="2"/>
+      <polygon points="168,130 160,125 160,135" fill="#f5a623"/>
+      <rect x="168" y="86" width="132" height="88" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+      <text x="234" y="110" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">SUBSTATION</text>
+      <text x="234" y="132" text-anchor="middle" fill="#aeb7c2" font-size="10.5">steps high voltage</text>
+      <text x="234" y="148" text-anchor="middle" fill="#aeb7c2" font-size="10.5">down to usable</text>
+      <line x1="300" y1="130" x2="318" y2="130" stroke="#f5a623" stroke-width="2"/>
+      <polygon points="318,130 310,125 310,135" fill="#f5a623"/>
+      <rect x="318" y="86" width="130" height="88" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+      <text x="383" y="110" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">UPS + BATTERIES</text>
+      <text x="383" y="132" text-anchor="middle" fill="#aeb7c2" font-size="10.5">ride through grid</text>
+      <text x="383" y="148" text-anchor="middle" fill="#aeb7c2" font-size="10.5">blips &amp; blackouts</text>
+      <line x1="448" y1="130" x2="466" y2="130" stroke="#f5a623" stroke-width="2"/>
+      <polygon points="466,130 458,125 458,135" fill="#f5a623"/>
+      <rect x="466" y="86" width="154" height="88" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+      <text x="543" y="110" text-anchor="middle" fill="#7ee787" font-size="12" font-weight="700">GPU RACKS</text>
+      <text x="543" y="132" text-anchor="middle" fill="#aeb7c2" font-size="10.5">~120 kW each</text>
+      <text x="543" y="148" text-anchor="middle" fill="#58a6ff" font-size="10.5">Chapter 7: NVL72</text>
+      <line x1="543" y1="174" x2="543" y2="208" stroke="#ff9e64" stroke-width="3"/>
+      <polygon points="543,208 538,200 548,200" fill="#ff9e64"/>
+      <text x="556" y="198" fill="#ff9e64" font-size="10.5">hot coolant</text>
+      <rect x="400" y="216" width="220" height="70" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+      <text x="510" y="240" text-anchor="middle" fill="#58a6ff" font-size="12" font-weight="700">LIQUID COOLING LOOP</text>
+      <text x="510" y="262" text-anchor="middle" fill="#aeb7c2" font-size="10.5">water picks up the heat</text>
+      <text x="510" y="278" text-anchor="middle" fill="#aeb7c2" font-size="10.5">and carries it out</text>
+      <line x1="430" y1="286" x2="430" y2="330" stroke="#ff9e64" stroke-width="3"/>
+      <line x1="430" y1="330" x2="56" y2="330" stroke="#ff9e64" stroke-width="3"/>
+      <polygon points="56,330 64,325 64,335" fill="#ff9e64"/>
+      <text x="239" y="320" text-anchor="middle" fill="#ff9e64" font-size="11" font-weight="700">HEAT OUT — cooling towers dump it to the air</text>
+      <text x="320" y="362" text-anchor="middle" fill="#aeb7c2" font-size="11">power in, heat out — the GPUs in the middle turn one into the other</text>
+    </g>
+  </svg>
+</figure>
+<div class="stats" aria-label="Key numbers">
+  <div class="stat"><strong>~120 kW</strong><span>one NVIDIA NVL72 AI rack — vs ~8 kW for an average rack</span></div>
+  <div class="stat"><strong>~1.10</strong><span>fleet PUE at Google — PUE (power usage effectiveness) = total power in ÷ power reaching the servers; 1.0 is perfect</span></div>
+  <div class="stat"><strong>~950 TWh</strong><span>IEA projection for data-center electricity in 2030 — about Japan&rsquo;s total, ~3% of the world&rsquo;s</span></div>
+  <div class="stat"><strong>~5 years</strong><span>average US wait to connect new power to the grid (Lawrence Berkeley Lab)</span></div>
+</div>
+<div class="step-stack">
+  <details class="step-card">
+    <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">What it is</span><span class="step-name">Every accelerator&rsquo;s final stop</span></span></summary>
+    <div class="detail-body"><div class="step-story">
+      <p>A data center is a building full of servers — computers stacked in racks, wired together, running around the clock. An AI data center is the same idea turned up to eleven: the racks are packed with GPUs instead of ordinary CPUs (Chapter&nbsp;7&rsquo;s NVL72 rack holds 72 of them), each rack drinks ~120&nbsp;kW — about <strong>fifteen times</strong> a traditional rack — and the whole building is engineered around two things: feeding them power, and removing their heat.</p>
+      <p>The business has two tribes. <strong>Hyperscalers</strong> are the big three clouds — <strong>AWS</strong> (Amazon), <strong>Azure</strong> (Microsoft), <strong>GCP</strong> (Google) — selling general computing to everyone and now racing to stand up AI capacity. <strong>Neoclouds</strong> are the GPU-first specialists — <strong>CoreWeave</strong>, <strong>Nebius</strong> — built from scratch to rent AI compute by the hour: the newest NVIDIA chips, fast networking, simple pricing, no legacy enterprise software to drag along.</p>
+      <p class="plain-note"><strong>In plain English:</strong> the chip is the engine; the data center is the car, the fuel station, and the radiator — and everyone is racing to build all three at once.</p>
+    </div></div>
+  </details>
+  <details class="step-card">
+    <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">How it works</span><span class="step-name">The power chain and the bottleneck</span></span></summary>
+    <div class="detail-body"><div class="step-story">
+      <figure class="inline-figure">
+        <figcaption class="figure-label">THE POWER CHAIN INSIDE</figcaption>
+        <svg viewBox="0 0 640 210" role="img" aria-label="Diagram: grid to substation to UPS to power shelves to GPUs, with the 100-megawatt campus scale annotated" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+          <g font-family="system-ui,sans-serif">
+            <text x="320" y="24" text-anchor="middle" fill="#f5a623" font-size="12" font-weight="700">THE POWER CHAIN INSIDE</text>
+            <rect x="8" y="50" width="104" height="76" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="60" y="74" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">GRID</text>
+            <text x="60" y="96" text-anchor="middle" fill="#aeb7c2" font-size="10.5">raw supply</text>
+            <line x1="112" y1="88" x2="128" y2="88" stroke="#f5a623" stroke-width="2"/>
+            <polygon points="128,88 120,83 120,93" fill="#f5a623"/>
+            <rect x="128" y="50" width="112" height="76" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="184" y="74" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">SUBSTATION</text>
+            <text x="184" y="96" text-anchor="middle" fill="#aeb7c2" font-size="10.5">step down</text>
+            <line x1="240" y1="88" x2="256" y2="88" stroke="#f5a623" stroke-width="2"/>
+            <polygon points="256,88 248,83 248,93" fill="#f5a623"/>
+            <rect x="256" y="50" width="104" height="76" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="308" y="74" text-anchor="middle" fill="#edf1f5" font-size="12" font-weight="700">UPS</text>
+            <text x="308" y="96" text-anchor="middle" fill="#aeb7c2" font-size="10.5">backup</text>
+            <line x1="360" y1="88" x2="376" y2="88" stroke="#f5a623" stroke-width="2"/>
+            <polygon points="376,88 368,83 368,93" fill="#f5a623"/>
+            <rect x="376" y="50" width="112" height="76" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="432" y="74" text-anchor="middle" fill="#edf1f5" font-size="11" font-weight="700">POWER SHELVES</text>
+            <text x="432" y="96" text-anchor="middle" fill="#aeb7c2" font-size="10.5">AC &#8594; DC</text>
+            <line x1="488" y1="88" x2="504" y2="88" stroke="#f5a623" stroke-width="2"/>
+            <polygon points="504,88 496,83 496,93" fill="#f5a623"/>
+            <rect x="504" y="50" width="128" height="76" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+            <text x="568" y="74" text-anchor="middle" fill="#7ee787" font-size="12" font-weight="700">GPUs</text>
+            <text x="568" y="96" text-anchor="middle" fill="#aeb7c2" font-size="10.5">do the work</text>
+            <text x="320" y="162" text-anchor="middle" fill="#f5a623" font-size="11">a 100 MW campus ≈ 100,000 households of power (IEA) — or ~800 NVL72 racks</text>
+            <text x="320" y="186" text-anchor="middle" fill="#aeb7c2" font-size="11">every watt that reaches a GPU leaves as heat — nothing is stored</text>
+          </g>
+        </svg>
+      </figure>
+      <p>Electricity enters at transmission voltage and gets <strong>stepped down</strong> by the site&rsquo;s own substation, passes through <strong>UPS systems and battery banks</strong> (uninterruptible power supply) that ride through grid blips, gets converted from AC to DC in <strong>rack power shelves</strong>, and finally reaches the GPUs. Every watt that reaches a chip leaves as heat — a data center is a machine for turning electricity into answers, with thermal exhaust.</p>
+      <figure class="inline-figure">
+        <figcaption class="figure-label">THE BOTTLENECK: WHO GETS THERE FIRST</figcaption>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Diagram: GPU deployment takes 18 to 24 months, grid connection averages 5 years, new transmission takes 7 to 12 years" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+          <g font-family="system-ui,sans-serif">
+            <text x="320" y="24" text-anchor="middle" fill="#f5a623" font-size="12" font-weight="700">THE BOTTLENECK: WHO GETS THERE FIRST</text>
+            <text x="12" y="72" fill="#7ee787" font-size="12" font-weight="700">GPUs</text>
+            <text x="12" y="88" fill="#aeb7c2" font-size="10.5">deployed</text>
+            <rect x="130" y="58" width="230" height="34" rx="6" fill="#7ee787" opacity="0.85"/>
+            <text x="245" y="80" text-anchor="middle" fill="#0b1016" font-size="11" font-weight="700">~18–24 months</text>
+            <text x="12" y="126" fill="#f5a623" font-size="12" font-weight="700">GRID</text>
+            <text x="12" y="142" fill="#aeb7c2" font-size="10.5">connection</text>
+            <rect x="130" y="112" width="460" height="34" rx="6" fill="#f5a623" opacity="0.85"/>
+            <text x="360" y="134" text-anchor="middle" fill="#0b1016" font-size="11" font-weight="700">~5 years average wait</text>
+            <text x="12" y="180" fill="#ff9e64" font-size="12" font-weight="700">NEW</text>
+            <text x="12" y="196" fill="#aeb7c2" font-size="10.5">transmission</text>
+            <rect x="130" y="166" width="500" height="34" rx="6" fill="#ff9e64" opacity="0.85"/>
+            <text x="380" y="188" text-anchor="middle" fill="#0b1016" font-size="11" font-weight="700">~7–12+ years</text>
+            <line x1="360" y1="48" x2="360" y2="200" stroke="#7ee787" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <text x="368" y="52" fill="#7ee787" font-size="10.5">GPUs ready here…</text>
+            <text x="320" y="228" text-anchor="middle" fill="#aeb7c2" font-size="11">chips deploy in months; the wires take years — that gap is the speed limit on AI scaling</text>
+          </g>
+        </svg>
+      </figure>
+      <p>Here is the industry&rsquo;s central mismatch: an AI hall can go from decision to operating in ~18–24 months, and the chips inside are obsolete in about three years. But the <strong>average US grid interconnection takes ~5 years</strong>, and major new transmission takes <strong>7–12+ years</strong> (Lawrence Berkeley National Laboratory). The building goes up fast; the permission to plug it in arrives slowly. That is why hyperscalers now sign power a decade ahead — and why <strong>behind-the-meter</strong> generation (building your own power plant on site) has become a thing.</p>
+      <p class="plain-note"><strong>In plain English:</strong> the chips are ready long before the electricity is. Power — not silicon — may be the binding constraint on how fast AI scales.</p>
+    </div></div>
+  </details>
+  <details class="step-card">
+    <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">The moat question</span><span class="step-name">Scale, power contracts, or orchestration?</span></span></summary>
+    <div class="detail-body"><div class="step-story">
+      <p><strong>The moat question:</strong> is the moat scale, power contracts, or software orchestration — and do the neoclouds survive the build-out?</p>
+      <p><strong>Scale</strong> is the bluntest answer: a hyperscaler spreads the cost of a gigawatt campus — land, substations, cooling plants — across millions of customers. Nobody out-builds them on capital. <strong>Power contracts</strong> may be the sharpest: a locked-in decade of cheap, firm electricity is a compounding cost advantage no competitor can conjure, and every gigawatt the giants sign is a gigawatt denied to rivals — this is where the Energy track picks up. <strong>Software orchestration</strong> is the quiet one: a 100,000-GPU cluster sitting idle earns nothing while its hardware depreciates in ~3 years, so the layer that schedules jobs, keeps utilization high, and routes around failures is the difference between an asset and a bonfire of capital.</p>
+      <p>On the <strong>neocloud survival</strong> question: their edge is focus and speed — GPU-first, no bureaucracy, first with the newest chips. Their risk is leverage — debt-funded hardware against a three-year depreciation clock. If demand keeps roaring, they can convert speed into long-term contracts with labs and even the hyperscalers themselves, and become the industry&rsquo;s GPU landlords. If the build-out pauses, they are the most exposed balance sheets in the chain — consolidation candidates, not survivors. Watch who locks in firm capacity, not who announces the most GPUs.</p>
+    </div></div>
+  </details>
+</div>
+<details class="video-toggle"><summary><span class="vt-caret">▶</span><span class="vt-text">Show video &mdash; The Big Data Center Water Problem (Asianometry)</span></summary>
+<figure class="inline-figure">
+  <figcaption class="figure-label">WATCH IT HAPPEN &mdash; THE OTHER SIDE OF THE POWER STORY</figcaption>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/tJYSzc7YkY0" title="The Big Data Center Water Problem (Asianometry)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <p style="color:#aeb7c2;font-size:13px;margin:8px 2px 0">Asianometry&rsquo;s look at the resource war behind the racks: cooling is the second half of the power story, and water is its quiet constraint. <a style="color:#f5a623" href="https://www.youtube.com/watch?v=tJYSzc7YkY0" target="_blank" rel="noopener">Watch on YouTube.</a></p>
+</figure>
+</details>
+<aside class="company-panel">
+  <h4>Names to know</h4>
+  <p><strong>Amazon / AWS</strong> (USA) — the largest cloud by revenue; building AI campuses at gigawatt scale and filling them partly with its own Trainium chips. <strong>Microsoft / Azure</strong> (USA) — the second cloud; has locked in vast GPU capacity and is turning back to nuclear for firm power. <strong>Alphabet / Google Cloud</strong> (USA) — runs the industry&rsquo;s most efficient fleet (~1.10 PUE) and designs its own TPUs. <strong>CoreWeave</strong> (USA) — the original neocloud: pure GPU rental for AI labs, scaled fast on debt-funded hardware. <strong>Nebius</strong> (Netherlands) — Amsterdam-headquartered neocloud spun out of Yandex; builds its own servers, racks, and data centers across Europe and the US.</p>
+</aside>
+</div></details>
         <details><summary>Energy — the power wall</summary><div class="detail-body"><p><strong>Why it matters:</strong> a gigawatt-scale AI data center needs a power plant next door, and grid interconnection queues stretch for years. Power — not chips — may be the binding constraint on AI scaling.</p><p><strong>The moat question:</strong> who controls firm power: utilities, SMR developers, gas turbine makers — or the hyperscalers signing it all up?</p><p><strong>Names to know:</strong> Vertiv (power &amp; cooling), utilities, SMR developers, turbine makers.</p></div></details>
-        <details><summary>EDA &amp; IP — the software moats</summary><div class="detail-body"><p><strong>Why it matters:</strong> nothing tapes out without Synopsys and Cadence (the EDA duopoly), and ARM's ISA sits inside nearly every mobile chip on Earth. Highest margins in semis, near-zero marginal cost.</p><p><strong>The moat question:</strong> can anyone dislodge a duopoly the entire industry is trained on?</p><p><strong>Names to know:</strong> Synopsys, Cadence, ARM.</p></div></details>
-        <details><summary>OSAT — assembly &amp; test</summary><div class="detail-body"><p><strong>Why it matters:</strong> the back end — dicing, bonding, packaging, testing. Less glamorous, heavily consolidated — and advanced packaging is pulling OSAT up the value chain toward the front end.</p><p><strong>The moat question:</strong> scale plus proximity to fabs; who captures the advanced-packaging overflow?</p><p><strong>Names to know:</strong> ASE, Amkor.</p></div></details>
+        <details><summary>EDA &amp; IP — the software moats</summary><div class="detail-body">
+  <figure class="inline-figure">
+    <figcaption class="figure-label">WHERE EDA AND IP SIT — THE TWO TOLLBOOTHS</figcaption>
+    <svg viewBox="0 0 680 380" role="img" aria-label="Diagram: chip pipeline from spec through licensed Arm IP, design, EDA tools, tapeout, and fab, with two tollbooths marked" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+      <g font-family="system-ui,sans-serif" text-anchor="middle">
+        <text x="340" y="30" fill="#aeb7c2" font-size="13" font-weight="700">TWO COMPANIES (TYPES) GET PAID BEFORE A SINGLE WAFER IS MADE</text>
+        <text x="158" y="56" fill="#aeb7c2" font-size="11">Arm — license fee + cents per chip</text>
+        <rect x="88" y="68" width="140" height="30" rx="15" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+        <text x="158" y="88" fill="#f5a623" font-size="12" font-weight="700">TOLLBOOTH 1</text>
+        <line x1="158" y1="102" x2="158" y2="146" stroke="#f5a623" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="409" y="56" fill="#aeb7c2" font-size="11">Synopsys / Cadence — recurring seat licenses</text>
+        <rect x="339" y="68" width="140" height="30" rx="15" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+        <text x="409" y="88" fill="#58a6ff" font-size="12" font-weight="700">TOLLBOOTH 2</text>
+        <line x1="409" y1="102" x2="409" y2="146" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <g>
+          <rect x="12" y="150" width="72" height="84" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="1.5"/>
+          <text x="48" y="182" fill="#aeb7c2" font-size="12" font-weight="700">SPEC</text>
+          <text x="48" y="202" fill="#aeb7c2" font-size="11">chip idea</text>
+          <rect x="110" y="150" width="96" height="84" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+          <text x="158" y="176" fill="#f5a623" font-size="12" font-weight="700">ARM IP</text>
+          <text x="158" y="196" fill="#aeb7c2" font-size="11">licensed in:</text>
+          <text x="158" y="212" fill="#aeb7c2" font-size="11">CPU cores, buses</text>
+          <rect x="232" y="150" width="96" height="84" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="1.5"/>
+          <text x="280" y="176" fill="#aeb7c2" font-size="12" font-weight="700">DESIGN</text>
+          <text x="280" y="196" fill="#aeb7c2" font-size="11">write RTL</text>
+          <text x="280" y="212" fill="#aeb7c2" font-size="11">(Verilog code)</text>
+          <rect x="354" y="150" width="110" height="84" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+          <text x="409" y="172" fill="#58a6ff" font-size="12" font-weight="700">EDA TOOLS</text>
+          <text x="409" y="192" fill="#aeb7c2" font-size="11">synthesis, place</text>
+          <text x="409" y="208" fill="#aeb7c2" font-size="11">&amp; route, verify, signoff</text>
+          <rect x="490" y="150" width="78" height="84" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="1.5"/>
+          <text x="529" y="176" fill="#aeb7c2" font-size="12" font-weight="700">TAPEOUT</text>
+          <text x="529" y="196" fill="#aeb7c2" font-size="11">GDSII → fab</text>
+          <rect x="594" y="150" width="72" height="84" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="1.5"/>
+          <text x="630" y="182" fill="#aeb7c2" font-size="12" font-weight="700">FAB</text>
+          <text x="630" y="202" fill="#aeb7c2" font-size="11">wafers → chips</text>
+        </g>
+        <g stroke="#aeb7c2" stroke-width="1.5" fill="none">
+          <line x1="84" y1="192" x2="106" y2="192"/><polygon points="106,192 99,188 99,196" fill="#aeb7c2" stroke="none"/>
+          <line x1="206" y1="192" x2="228" y2="192"/><polygon points="228,192 221,188 221,196" fill="#aeb7c2" stroke="none"/>
+          <line x1="328" y1="192" x2="350" y2="192"/><polygon points="350,192 343,188 343,196" fill="#aeb7c2" stroke="none"/>
+          <line x1="464" y1="192" x2="486" y2="192"/><polygon points="486,192 479,188 479,196" fill="#aeb7c2" stroke="none"/>
+          <line x1="568" y1="192" x2="590" y2="192"/><polygon points="590,192 583,188 583,196" fill="#aeb7c2" stroke="none"/>
+        </g>
+        <text x="340" y="272" fill="#f5a623" font-size="13" font-weight="700">No chip reaches a fab without passing both.</text>
+        <text x="340" y="296" fill="#aeb7c2" font-size="12">The IP owners and the tool vendors collect their cut before manufacturing even begins.</text>
+        <text x="340" y="318" fill="#aeb7c2" font-size="12">That is the software moat: you cannot route around it, only through it.</text>
+      </g>
+    </svg>
+  </figure>
+
+  <div class="stats" aria-label="Key numbers">
+    <div class="stat"><strong>~80%+</strong><span>of EDA market share held by Synopsys + Cadence</span></div>
+    <div class="stat"><strong>~37%</strong><span>Synopsys non-GAAP operating margin, FY2025</span></div>
+    <div class="stat"><strong>~350B</strong><span>Arm-based chips shipped, cumulative</span></div>
+    <div class="stat"><strong>&lt;$0.30</strong><span>Apple&rsquo;s Arm royalty per chip (2023 report)</span></div>
+  </div>
+
+  <div class="step-stack">
+    <details class="step-card">
+      <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">What it is</span><span class="step-name">Software that designs chips, and bricks you rent</span></span></summary>
+      <div class="detail-body"><div class="step-story">
+        <p><strong>EDA</strong> (electronic design automation) is the software that designs chips. A modern processor has billions of transistors; no human can place them by hand. So the entire design process — turning code into gates, placing those gates on silicon, checking timing, proving the layout is manufacturable — happens inside EDA tools. This is the software from the chip design flow you met in Chapter 3; this entry is the <em>business</em> of that software.</p>
+        <p><strong>IP</strong> (intellectual property) is pre-designed, pre-verified functional blocks licensed like Lego bricks instead of designed from scratch: CPU cores, memory controllers, USB controllers, SerDes links. Designing them yourself takes years and risks a failed chip; licensing them costs a fee and removes the risk.</p>
+        <p><strong>ISA</strong> (instruction set architecture) is the language software speaks to the chip — the list of instructions a processor understands (x86, Arm, RISC-V). Whoever defines the ISA sits at the bottom of the whole software stack: every app, OS, and compiler is written against it, so switching ISAs means rebuilding everything above.</p>
+        <p><strong>Arm</strong> (note the current styling: Arm, not ARM) makes no chips at all. It designs CPU cores and defines the Arm ISA, then licenses both to chipmakers — a pure IP business. That is why its marginal cost is near zero: the 350-billionth chip costs Arm nothing extra to design.</p>
+        <p class="plain-note"><strong>In plain English:</strong> EDA is the factory that designs chips, IP is the prefab parts, and the ISA is the language everyone agreed to speak. Arm owns the language and rents out the parts; Synopsys and Cadence own the factory.</p>
+      </div></div>
+    </details>
+
+    <details class="step-card">
+      <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">How it works</span><span class="step-name">A tool at every stage, a bill at every step</span></span></summary>
+      <div class="detail-body"><div class="step-story">
+        <p>Chapter 3&rsquo;s design flow is really an EDA invoice with stages. Here is which vendor&rsquo;s tool sits at each gate:</p>
+        <figure class="inline-figure">
+          <figcaption class="figure-label">THE DESIGN FLOW — AN EDA TOOL AT EVERY STAGE</figcaption>
+          <svg viewBox="0 0 680 320" role="img" aria-label="Diagram: RTL to synthesis to place and route to verification to signoff, with the EDA vendor tool at each stage" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+            <g font-family="system-ui,sans-serif" text-anchor="middle">
+              <rect x="12" y="110" width="112" height="90" rx="8" fill="#10161e" stroke="#aeb7c2" stroke-width="1.5"/>
+              <text x="68" y="140" fill="#aeb7c2" font-size="12" font-weight="700">1 · RTL</text>
+              <text x="68" y="160" fill="#aeb7c2" font-size="11">designers write</text>
+              <text x="68" y="176" fill="#aeb7c2" font-size="11">Verilog code</text>
+              <rect x="142" y="110" width="112" height="90" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+              <text x="198" y="140" fill="#58a6ff" font-size="12" font-weight="700">2 · SYNTHESIS</text>
+              <text x="198" y="160" fill="#aeb7c2" font-size="11">Synopsys</text>
+              <text x="198" y="176" fill="#aeb7c2" font-size="11">Design Compiler</text>
+              <rect x="272" y="110" width="112" height="90" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+              <text x="328" y="140" fill="#f5a623" font-size="12" font-weight="700">3 · PLACE &amp; ROUTE</text>
+              <text x="328" y="160" fill="#aeb7c2" font-size="11">Cadence Innovus</text>
+              <text x="328" y="176" fill="#aeb7c2" font-size="11">Synopsys Fusion C.</text>
+              <rect x="402" y="110" width="112" height="90" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+              <text x="458" y="140" fill="#7ee787" font-size="12" font-weight="700">4 · VERIFY</text>
+              <text x="458" y="160" fill="#aeb7c2" font-size="11">VCS simulation</text>
+              <text x="458" y="176" fill="#aeb7c2" font-size="11">Palladium / ZeBu</text>
+              <rect x="532" y="110" width="112" height="90" rx="8" fill="#10161e" stroke="#ff9e64" stroke-width="2"/>
+              <text x="588" y="140" fill="#ff9e64" font-size="12" font-weight="700">5 · SIGNOFF</text>
+              <text x="588" y="160" fill="#aeb7c2" font-size="11">PrimeTime (STA)</text>
+              <text x="588" y="176" fill="#aeb7c2" font-size="11">Calibre (DRC/LVS)</text>
+              <g stroke="#aeb7c2" stroke-width="1.5" fill="none">
+                <line x1="124" y1="155" x2="138" y2="155"/><polygon points="138,155 132,151 132,159" fill="#aeb7c2" stroke="none"/>
+                <line x1="254" y1="155" x2="268" y2="155"/><polygon points="268,155 262,151 262,159" fill="#aeb7c2" stroke="none"/>
+                <line x1="384" y1="155" x2="398" y2="155"/><polygon points="398,155 392,151 392,159" fill="#aeb7c2" stroke="none"/>
+                <line x1="514" y1="155" x2="528" y2="155"/><polygon points="528,155 522,151 522,159" fill="#aeb7c2" stroke="none"/>
+              </g>
+              <text x="340" y="248" fill="#aeb7c2" font-size="12">Miss a bug and you pay ~$50–100M for a respin — a second manufacturing pass to fix silicon.</text>
+              <text x="340" y="270" fill="#7ee787" font-size="12" font-weight="700">Verification is cheap insurance. Nobody skips it, and nobody switches the tools that do it.</text>
+            </g>
+          </svg>
+        </figure>
+        <p>Most big chipmakers actually license from <em>all three</em> EDA vendors on a single chip — Synopsys for synthesis and simulation, Cadence for analog and custom layout, Siemens EDA&rsquo;s Calibre for physical verification signoff — because no single vendor owns the whole flow. The real unit of lock-in is not one tool but the validated <strong>flow</strong>: the PDK (process design kit, the foundry&rsquo;s rulebook), the libraries, and the tool versions all qualified together by the foundry. Changing vendors means re-qualifying everything — on a chip that costs hundreds of millions to develop.</p>
+        <figure class="inline-figure">
+          <figcaption class="figure-label">THE MONEY FLYWHEEL — HOW SOFTWARE MOATS GET PAID</figcaption>
+          <svg viewBox="0 0 680 330" role="img" aria-label="Diagram: license fees, per-chip royalties, and recurring maintenance flowing into near-zero marginal cost software economics" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+            <g font-family="system-ui,sans-serif" text-anchor="middle">
+              <rect x="20" y="70" width="300" height="66" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="1.5"/>
+              <text x="170" y="94" fill="#f5a623" font-size="12" font-weight="700">License fee — paid up front</text>
+              <text x="170" y="114" fill="#aeb7c2" font-size="11">the right to use Arm&rsquo;s designs or EDA seats</text>
+              <rect x="20" y="156" width="300" height="66" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="1.5"/>
+              <text x="170" y="180" fill="#7ee787" font-size="12" font-weight="700">Per-chip royalty — paid per unit</text>
+              <text x="170" y="200" fill="#aeb7c2" font-size="11">Arm: ~cents per chip × billions of chips</text>
+              <rect x="20" y="242" width="300" height="66" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="1.5"/>
+              <text x="170" y="266" fill="#58a6ff" font-size="12" font-weight="700">Maintenance + renewals — paid yearly</text>
+              <text x="170" y="286" fill="#aeb7c2" font-size="11">~78% of Synopsys revenue is recurring (FY25)</text>
+              <g stroke="#aeb7c2" stroke-width="1.5" fill="none">
+                <line x1="320" y1="103" x2="366" y2="103"/><polygon points="366,103 360,99 360,107" fill="#aeb7c2" stroke="none"/>
+                <line x1="320" y1="189" x2="366" y2="189"/><polygon points="366,189 360,185 360,193" fill="#aeb7c2" stroke="none"/>
+                <line x1="320" y1="275" x2="366" y2="275"/><polygon points="366,275 360,271 360,279" fill="#aeb7c2" stroke="none"/>
+              </g>
+              <rect x="370" y="110" width="270" height="170" rx="10" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+              <text x="505" y="142" fill="#7ee787" font-size="13" font-weight="700">THE SOFTWARE PART</text>
+              <text x="505" y="168" fill="#aeb7c2" font-size="12">no fab, no inventory,</text>
+              <text x="505" y="188" fill="#aeb7c2" font-size="12">near-zero marginal cost —</text>
+              <text x="505" y="208" fill="#aeb7c2" font-size="12">the next chip or seat costs ~$0</text>
+              <line x1="395" y1="226" x2="615" y2="226" stroke="#7ee787" stroke-width="1" stroke-dasharray="6,4"/>
+              <text x="505" y="252" fill="#f5a623" font-size="14" font-weight="700">→ margins ~35–40%</text>
+            </g>
+          </svg>
+        </figure>
+        <p>This is why the teaser line holds: <strong>highest margins in semis, near-zero marginal cost</strong>. An EDA license costs the same to &ldquo;manufacture&rdquo; whether the customer designs one chip or a hundred; an Arm royalty on a chip costs Arm nothing at all. The expense is all upfront — decades of R&amp;D baked into tools the industry cannot stop using.</p>
+        <p class="plain-note"><strong>In plain English:</strong> three ways to get paid — up front, per chip, and every year — and each new sale costs almost nothing to deliver. That is the best margin structure in the chip industry.</p>
+      </div></div>
+    </details>
+
+    <details class="step-card">
+      <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">Why it matters</span><span class="step-name">The moat question: who can break in?</span></span></summary>
+      <div class="detail-body"><div class="step-story">
+        <p><strong>Why it matters:</strong> nothing tapes out without Synopsys and Cadence (the EDA duopoly), and Arm&rsquo;s ISA sits inside nearly every mobile chip on Earth. Highest margins in semis, near-zero marginal cost.</p>
+        <p><strong>The moat question:</strong> can anyone dislodge a duopoly the entire industry is trained on?</p>
+        <p><strong>Names to know:</strong> Synopsys, Cadence, Arm.</p>
+        <p>Why the duopoly is so hard to break: first, <strong>training lock-in</strong> — generations of chip engineers learned chip design on these exact tools; university curricula teach them. Second, <strong>flow lock-in</strong> — a design is validated end-to-end on one vendor&rsquo;s flow with one foundry&rsquo;s PDK; switching means re-qualifying everything and risking a $50–100M respin. Third, every new node (3nm, 2nm) makes the tools more indispensable, not less, because the physics get harder.</p>
+        <p>Do the challengers stand a chance? <strong>Open-source EDA</strong> (OpenROAD) is free and improving, but it cannot yet handle leading-edge complexity — nobody tapes out a 3nm flagship on it. <strong>Chinese EDA</strong> (Empyrean) is closing the gap at mature nodes, helped by export restrictions forcing domestic tools into production — but the leading edge is still American software. And against Arm&rsquo;s ISA, the challenger is <strong>RISC-V</strong>: royalty-free and open, but decades behind in software ecosystem — every OS, compiler, and app would have to follow.</p>
+        <p>The honest answer to the moat question: the tools get <em>more</em> entrenched as chips get harder to design. Anyone can write a better simulator; nobody can re-train the industry.</p>
+      </div></div>
+    </details>
+  </div>
+
+  <aside class="company-panel">
+    <h4>The three names behind this track</h4>
+    <p><strong>Synopsys</strong> (USA) — the synthesis and simulation king (Design Compiler, VCS), plus the DesignWare IP catalog — it sells both the factory and the prefab parts; closed its $35B Ansys acquisition in 2025, stretching from chips into full-system simulation. <strong>Cadence</strong> (USA) — owns analog/custom design (Virtuoso) and sells emulation hardware (Palladium) that boots real software months before silicon exists; also a major IP licensor. <strong>Arm</strong> (UK) — the pure IP play: licenses the ISA and CPU designs inside &gt;99% of the world&rsquo;s smartphones and a fast-growing share of data-center chips, collecting cents per chip at zero marginal cost.</p>
+  </aside>
+
+  <details class="video-toggle"><summary><span class="vt-caret">▶</span><span class="vt-text">Show video &mdash; The EDA Duopoly — Two Companies Decide Who Can Design a Chip</span></summary>
+<figure class="inline-figure">
+  <figcaption class="figure-label">WATCH IT HAPPEN &mdash; THE MOAT, IN 14 MINUTES</figcaption>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/HN5rQ-SmEiY" title="The EDA Duopoly — Two Companies Decide Who Can Design a Chip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <p style="color:#aeb7c2;font-size:13px;margin:8px 2px 0">Forgotten Monopolies&rsquo; first episode &mdash; how Synopsys and Cadence became the gatekeepers of chip design: DesignWare IP, Cadence&rsquo;s Palladium emulation hardware, the PDK + foundry-qualification lock-in, why open-source EDA (OpenROAD) can&rsquo;t reach the leading edge, and why AI entrenches the duopoly. Verified public on YouTube Oct 10, 2026. <a style="color:#f5a623" href="https://www.youtube.com/watch?v=HN5rQ-SmEiY" target="_blank" rel="noopener">Watch on YouTube.</a></p>
+</figure>
+</details>
+</div></details>
+        <details><summary>OSAT — assembly &amp; test</summary><div class="detail-body">
+      <figure class="inline-figure">
+        <figcaption class="figure-label">THE OSAT PIPELINE — WAFER IN, CHIPS OUT</figcaption>
+        <svg viewBox="0 0 900 420" role="img" aria-label="Diagram: the nine-station OSAT pipeline from finished wafer to packaged chips" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+          <g font-family="system-ui,sans-serif" text-anchor="middle">
+            <rect x="20" y="20" width="210" height="80" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="125" y="48" fill="#58a6ff" font-size="13" font-weight="700">1 · FINISHED WAFER IN</text>
+            <text x="125" y="68" fill="#aeb7c2" font-size="11">hundreds of dies on one disc</text>
+            <rect x="345" y="20" width="210" height="80" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="450" y="44" fill="#f5a623" font-size="13" font-weight="700">2 · WAFER PROBE</text>
+            <text x="450" y="62" fill="#aeb7c2" font-size="11">test every die on the wafer</text>
+            <text x="450" y="78" fill="#aeb7c2" font-size="11">dead ones get an ink dot</text>
+            <rect x="670" y="20" width="210" height="80" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="775" y="48" fill="#58a6ff" font-size="13" font-weight="700">3 · BACKGRIND</text>
+            <text x="775" y="68" fill="#aeb7c2" font-size="11">thin the wafer from behind</text>
+            <rect x="670" y="170" width="210" height="80" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="775" y="198" fill="#f5a623" font-size="13" font-weight="700">4 · DICE</text>
+            <text x="775" y="218" fill="#aeb7c2" font-size="11">diamond saw cuts dies apart</text>
+            <rect x="345" y="170" width="210" height="80" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="450" y="198" fill="#58a6ff" font-size="13" font-weight="700">5 · DIE ATTACH</text>
+            <text x="450" y="218" fill="#aeb7c2" font-size="11">glue each die to its leadframe</text>
+            <rect x="20" y="170" width="210" height="80" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="125" y="194" fill="#f5a623" font-size="13" font-weight="700">6 · WIRE BOND / FLIP CHIP</text>
+            <text x="125" y="212" fill="#aeb7c2" font-size="11">connect die pads to package pins</text>
+            <text x="125" y="228" fill="#aeb7c2" font-size="11">wires, or face-down solder bumps</text>
+            <rect x="20" y="320" width="210" height="80" rx="8" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+            <text x="125" y="348" fill="#58a6ff" font-size="13" font-weight="700">7 · MOLD</text>
+            <text x="125" y="368" fill="#aeb7c2" font-size="11">plastic shell seals the die</text>
+            <rect x="345" y="320" width="210" height="80" rx="8" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+            <text x="450" y="344" fill="#f5a623" font-size="13" font-weight="700">8 · FINAL TEST</text>
+            <text x="450" y="362" fill="#aeb7c2" font-size="11">burn-in: run hot, catch weak chips</text>
+            <text x="450" y="378" fill="#aeb7c2" font-size="11">test the chip inside its package</text>
+            <rect x="670" y="320" width="210" height="80" rx="8" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+            <text x="775" y="348" fill="#7ee787" font-size="13" font-weight="700">9 · PACKAGED CHIPS OUT</text>
+            <text x="775" y="368" fill="#aeb7c2" font-size="11">tape &amp; reel, shipped to customers</text>
+            <g stroke="#f5a623" stroke-width="2.5" fill="none">
+              <line x1="230" y1="60" x2="338" y2="60"/><polygon points="338,60 326,54 326,66" fill="#f5a623" stroke="none"/>
+              <line x1="555" y1="60" x2="663" y2="60"/><polygon points="663,60 651,54 651,66" fill="#f5a623" stroke="none"/>
+              <line x1="775" y1="100" x2="775" y2="163"/><polygon points="775,163 769,151 781,151" fill="#f5a623" stroke="none"/>
+              <line x1="663" y1="210" x2="560" y2="210"/><polygon points="560,210 572,204 572,216" fill="#f5a623" stroke="none"/>
+              <line x1="338" y1="210" x2="235" y2="210"/><polygon points="235,210 247,204 247,216" fill="#f5a623" stroke="none"/>
+              <line x1="125" y1="250" x2="125" y2="313"/><polygon points="125,313 119,301 131,301" fill="#f5a623" stroke="none"/>
+              <line x1="230" y1="360" x2="338" y2="360"/><polygon points="338,360 326,354 326,366" fill="#f5a623" stroke="none"/>
+              <line x1="555" y1="360" x2="663" y2="360"/><polygon points="663,360 651,354 651,366" fill="#f5a623" stroke="none"/>
+            </g>
+          </g>
+        </svg>
+      </figure>
+
+      <p><strong>Why it matters:</strong> the back end &mdash; dicing, bonding, packaging, testing. Less glamorous, heavily consolidated &mdash; and advanced packaging is pulling OSAT up the value chain toward the front end.</p>
+
+      <div class="stats" aria-label="Key numbers">
+        <div class="stat"><strong>~45%</strong><span>ASE&rsquo;s share of top-10 OSAT revenue (TrendForce, 2024)</span></div>
+        <div class="stat"><strong>~$47B</strong><span>global OSAT market size, 2025</span></div>
+        <div class="stat"><strong>~86%</strong><span>of OSAT revenue sits in Asia-Pacific</span></div>
+        <div class="stat"><strong>~$79B</strong><span>advanced packaging market by 2030 (Yole, ~9% CAGR)</span></div>
+      </div>
+
+      <div class="step-stack">
+        <details class="step-card">
+          <summary><span class="step-badge">1</span><span class="step-heading"><span class="step-kicker">The back end</span><span class="step-name">What OSAT actually is</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p><strong>OSAT</strong> stands for <strong>outsourced semiconductor assembly and test</strong>. It is the back end of chipmaking: the fab prints circuits onto a silicon wafer, but a bare wafer cannot plug into anything &mdash; so OSAT companies take finished wafers and turn them into shippable chips.</p>
+            <p>Four jobs, unpacked. <strong>Dicing</strong> &mdash; sawing the wafer into individual <strong>dies</strong> (one die = one unpackaged chip) with a diamond saw. <strong>Bonding</strong> &mdash; wiring each die&rsquo;s electrical contacts out to the package: either <strong>wire bonding</strong> (hair-thin gold wires) or <strong>flip chip</strong> (the die flipped face-down onto solder bumps). <strong>Packaging</strong> &mdash; sealing the connected die inside a protective plastic or ceramic shell, with metal pins or balls that solder onto a circuit board. <strong>Testing</strong> &mdash; checking the chip actually works, twice: on the wafer before packaging (<strong>wafer probe</strong>) and again inside the finished package (<strong>final test</strong>).</p>
+            <p>The <strong>outsourced</strong> part is the business model. Most chip companies &mdash; fabless designers, and even foundries and IDMs &mdash; would rather not own back-end factories. OSATs pool volume across dozens of customers, keep their lines running full, and set up shop next to the fabs. Assembly and test is a scale game: an idle line is a money fire.</p>
+            <p class="plain-note"><strong>In plain English:</strong> the fab makes the circuits; the OSAT turns them into things you can solder onto a board &mdash; cut apart, wired up, sealed, and tested.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">2</span><span class="step-heading"><span class="step-kicker">The machinery</span><span class="step-name">Three stations that decide the economics</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p>Every station in the pipeline matters, but three of them decide who makes money and who doesn&rsquo;t.</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">THREE STATIONS THAT MATTER</figcaption>
+              <svg viewBox="0 0 900 620" role="img" aria-label="Diagram: wafer probe catching bad dies early, wire bond versus flip chip cross-sections, and burn-in final test" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif" text-anchor="middle">
+                  <text x="450" y="32" fill="#f5a623" font-size="13" font-weight="700">STATION 1 · WAFER PROBE — CATCH BAD DIES BEFORE THEY COST YOU</text>
+                  <g fill="#10161e" stroke="#58a6ff" stroke-width="1.5">
+                    <rect x="177" y="60" width="42" height="42" rx="3"/><rect x="233" y="60" width="42" height="42" rx="3"/><rect x="289" y="60" width="42" height="42" rx="3"/><rect x="345" y="60" width="42" height="42" rx="3"/><rect x="401" y="60" width="42" height="42" rx="3"/><rect x="457" y="60" width="42" height="42" rx="3"/><rect x="513" y="60" width="42" height="42" rx="3"/><rect x="569" y="60" width="42" height="42" rx="3"/><rect x="625" y="60" width="42" height="42" rx="3"/><rect x="681" y="60" width="42" height="42" rx="3"/>
+                  </g>
+                  <g stroke="#ff9e64" stroke-width="2.5">
+                    <line x1="355" y1="70" x2="377" y2="92"/><line x1="377" y1="70" x2="355" y2="92"/>
+                    <line x1="579" y1="70" x2="601" y2="92"/><line x1="601" y1="70" x2="579" y2="92"/>
+                  </g>
+                  <circle cx="384" cy="96" r="5" fill="#000000" stroke="#aeb7c2" stroke-width="1"/>
+                  <line x1="254" y1="40" x2="254" y2="58" stroke="#58a6ff" stroke-width="3"/>
+                  <polygon points="254,58 249,50 259,50" fill="#58a6ff"/>
+                  <text x="254" y="30" fill="#58a6ff" font-size="11">probe needle</text>
+                  <text x="450" y="130" fill="#aeb7c2" font-size="12">a probe card tests every die while it is still on the wafer</text>
+                  <text x="450" y="150" fill="#aeb7c2" font-size="12">bad dies get an ink dot and are discarded — a dead die caught <tspan fill="#7ee787">here</tspan> costs nothing; caught <tspan fill="#ff9e64">after packaging</tspan> it wasted wires, plastic, and test time</text>
+                  <line x1="40" y1="170" x2="860" y2="170" stroke="#1f2833" stroke-width="1"/>
+                  <text x="450" y="196" fill="#58a6ff" font-size="13" font-weight="700">STATION 2 · THE CONNECTION — WIRE BOND VS FLIP CHIP</text>
+                  <line x1="450" y1="225" x2="450" y2="392" stroke="#1f2833" stroke-width="1"/>
+                  <rect x="70" y="300" width="240" height="20" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                  <rect x="130" y="262" width="120" height="38" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                  <path d="M142,262 Q112,232 100,300" stroke="#f5a623" stroke-width="2" fill="none"/>
+                  <path d="M238,262 Q268,232 280,300" stroke="#f5a623" stroke-width="2" fill="none"/>
+                  <text x="190" y="348" fill="#f5a623" font-size="13" font-weight="700">WIRE BOND</text>
+                  <text x="190" y="366" fill="#aeb7c2" font-size="11">hair-thin gold wires</text>
+                  <text x="190" y="382" fill="#aeb7c2" font-size="11">cheap · flexible · longer signal path</text>
+                  <rect x="590" y="300" width="240" height="20" fill="#10161e" stroke="#58a6ff" stroke-width="2"/>
+                  <rect x="650" y="252" width="110" height="36" fill="#10161e" stroke="#7ee787" stroke-width="2"/>
+                  <circle cx="675" cy="294" r="6" fill="#7ee787"/><circle cx="705" cy="294" r="6" fill="#7ee787"/><circle cx="735" cy="294" r="6" fill="#7ee787"/>
+                  <text x="710" y="348" fill="#7ee787" font-size="13" font-weight="700">FLIP CHIP</text>
+                  <text x="710" y="366" fill="#aeb7c2" font-size="11">die flipped face-down on solder bumps</text>
+                  <text x="710" y="382" fill="#aeb7c2" font-size="11">short path · more pins · faster, pricier</text>
+                  <line x1="40" y1="405" x2="860" y2="405" stroke="#1f2833" stroke-width="1"/>
+                  <text x="450" y="431" fill="#ff9e64" font-size="13" font-weight="700">STATION 3 · FINAL TEST — PROVE IT INSIDE THE PACKAGE</text>
+                  <rect x="300" y="460" width="300" height="90" rx="10" fill="#10161e" stroke="#ff9e64" stroke-width="2"/>
+                  <text x="450" y="484" fill="#ff9e64" font-size="12">burn-in: heat + voltage for hours</text>
+                  <g fill="#10161e" stroke="#aeb7c2" stroke-width="1.5">
+                    <rect x="330" y="495" width="44" height="28" rx="3"/><rect x="390" y="495" width="44" height="28" rx="3"/><rect x="450" y="495" width="44" height="28" rx="3"/><rect x="510" y="495" width="44" height="28" rx="3"/>
+                  </g>
+                  <g stroke="#ff9e64" stroke-width="2">
+                    <line x1="516" y1="501" x2="548" y2="517"/><line x1="548" y1="501" x2="516" y2="517"/>
+                  </g>
+                  <text x="450" y="574" fill="#aeb7c2" font-size="12">weak chips fail here — in the factory — instead of in your phone</text>
+                  <text x="450" y="594" fill="#aeb7c2" font-size="12">the two tests bracket the flow: probe cheap before packaging, final test thorough after</text>
+                </g>
+              </svg>
+            </figure>
+            <p><strong>1. Wafer probe &mdash; test before you spend.</strong> A probe card drops thousands of needles onto the wafer and tests every die while it is still one disc. Bad dies get an ink dot and are discarded. The economics are brutal and simple: a dead die caught here costs nothing beyond the test itself. A dead die caught after packaging wasted the wires, the plastic, the assembly time, and the final-test slot.</p>
+            <p><strong>2. The interconnect &mdash; wire bond or flip chip.</strong> This is the most consequential engineering choice in the back end. <strong>Wire bonding</strong> threads hair-thin gold wires from the die&rsquo;s edge pads out to the package &mdash; cheap, flexible, easy to rework, but the long loops slow signals and wires only fit around the die&rsquo;s edge. <strong>Flip chip</strong> skips the wires: the die is flipped face-down and connected through an array of solder bumps straight into the package substrate. Shorter path, hundreds more connections, better power delivery &mdash; but it needs fancier substrates and tighter process control. Fast chips (GPUs, phone processors) go flip chip; cheap chips stay wire-bonded.</p>
+            <p><strong>3. Final test &mdash; burn-in.</strong> Packaged chips go into ovens and run hot, at voltage, for hours. The point is to force early failures: the weak chips die in the factory instead of in your phone. Survivors get binned by speed and shipped.</p>
+            <figure class="inline-figure">
+              <figcaption class="figure-label">FROM COMMODITY TO STRATEGIC — THE VALUE MIGRATION</figcaption>
+              <svg viewBox="0 0 900 470" role="img" aria-label="Diagram: traditional wire-bonded packaging versus advanced packaging with logic and HBM on an interposer, and who captures the overflow" style="width:100%;height:auto;background:#0b1016;border-radius:8px">
+                <g font-family="system-ui,sans-serif" text-anchor="middle">
+                  <text x="225" y="36" fill="#aeb7c2" font-size="14" font-weight="700">TRADITIONAL PACKAGING</text>
+                  <text x="225" y="56" fill="#aeb7c2" font-size="11">wire-bonded QFN / BGA</text>
+                  <rect x="55" y="40" width="340" height="105" fill="none" stroke="#aeb7c2" stroke-width="1.5" stroke-dasharray="6,5"/>
+                  <rect x="80" y="120" width="290" height="20" fill="#10161e" stroke="#aeb7c2" stroke-width="2"/>
+                  <rect x="170" y="82" width="110" height="38" fill="#10161e" stroke="#aeb7c2" stroke-width="2"/>
+                  <path d="M182,82 Q152,58 142,120" stroke="#aeb7c2" stroke-width="1.5" fill="none"/>
+                  <path d="M268,82 Q298,58 308,120" stroke="#aeb7c2" stroke-width="1.5" fill="none"/>
+                  <text x="225" y="163" fill="#aeb7c2" font-size="11">one die + wires sealed in plastic</text>
+                  <rect x="95" y="178" width="260" height="36" fill="none" stroke="#aeb7c2" stroke-width="1.5"/>
+                  <text x="225" y="201" fill="#aeb7c2" font-size="12" font-weight="700">LOW MARGIN · COMMODITIZED</text>
+                  <text x="225" y="232" fill="#aeb7c2" font-size="11">microcontrollers, power chips</text>
+                  <line x1="450" y1="30" x2="450" y2="242" stroke="#1f2833" stroke-width="1"/>
+                  <text x="675" y="36" fill="#f5a623" font-size="14" font-weight="700">ADVANCED PACKAGING</text>
+                  <text x="675" y="56" fill="#aeb7c2" font-size="11">2.5D interposers · 3D stacking · chiplets</text>
+                  <rect x="530" y="130" width="290" height="24" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                  <rect x="552" y="88" width="120" height="34" fill="#10161e" stroke="#f5a623" stroke-width="2"/>
+                  <text x="612" y="110" fill="#f5a623" font-size="10">logic</text>
+                  <circle cx="575" cy="126" r="4" fill="#f5a623"/><circle cx="600" cy="126" r="4" fill="#f5a623"/><circle cx="625" cy="126" r="4" fill="#f5a623"/><circle cx="650" cy="126" r="4" fill="#f5a623"/>
+                  <g fill="#10161e" stroke="#7ee787" stroke-width="2">
+                    <rect x="700" y="64" width="100" height="18"/><rect x="700" y="84" width="100" height="18"/><rect x="700" y="104" width="100" height="18"/>
+                  </g>
+                  <text x="750" y="99" fill="#7ee787" font-size="10">HBM stack</text>
+                  <circle cx="720" cy="126" r="4" fill="#7ee787"/><circle cx="750" cy="126" r="4" fill="#7ee787"/><circle cx="780" cy="126" r="4" fill="#7ee787"/>
+                  <text x="675" y="163" fill="#aeb7c2" font-size="11">logic + HBM on a silicon interposer</text>
+                  <rect x="545" y="178" width="260" height="36" fill="none" stroke="#f5a623" stroke-width="1.5"/>
+                  <text x="675" y="201" fill="#f5a623" font-size="12" font-weight="700">HIGH MARGIN · STRATEGIC</text>
+                  <text x="675" y="232" fill="#aeb7c2" font-size="11">AI GPUs, CoWoS, HBM</text>
+                  <text x="450" y="272" fill="#ff9e64" font-size="13" font-weight="700">WHO CAPTURES THE OVERFLOW?</text>
+                  <rect x="40" y="292" width="390" height="72" fill="#10161e" stroke="#ff9e64" stroke-width="2" rx="8"/>
+                  <text x="235" y="318" fill="#ff9e64" font-size="12" font-weight="700">FOUNDRY KEEPS THE BEST STEP</text>
+                  <text x="235" y="340" fill="#aeb7c2" font-size="11">TSMC does CoWoS chip-on-wafer in-house</text>
+                  <rect x="470" y="292" width="390" height="72" fill="#10161e" stroke="#7ee787" stroke-width="2" rx="8"/>
+                  <text x="665" y="318" fill="#7ee787" font-size="12" font-weight="700">OSAT GETS THE OVERFLOW</text>
+                  <text x="665" y="340" fill="#aeb7c2" font-size="11">on-substrate assembly, bumping, test</text>
+                  <text x="450" y="394" fill="#aeb7c2" font-size="11">evidence: TSMC&rsquo;s 10-year deal buying advanced packaging &amp; test from Amkor in Arizona (2026)</text>
+                  <text x="450" y="414" fill="#aeb7c2" font-size="11">ASE&rsquo;s advanced-packaging segment grew ~19% YoY in 2025 — the AI pull is real</text>
+                </g>
+              </svg>
+            </figure>
+            <p>For decades packaging was a commodity: the cheaper the plastic shell, the better. <strong>Advanced packaging flipped that.</strong> When performance comes from stitching chiplets together &mdash; logic next to HBM on a silicon <strong>interposer</strong> (2.5D), or dies stacked vertically with <strong>TSVs</strong> (through-silicon vias) in 3D &mdash; the package becomes part of the chip&rsquo;s performance. This is Chapter&nbsp;4&rsquo;s territory (Advanced packaging); the OSAT is its traditional operator. The margins flipped with it: traditional wire-bonded packages are a scale-and-cost game, while advanced packages command real pricing power.</p>
+            <p>So who captures the value? Foundries want the best step for themselves &mdash; TSMC keeps CoWoS&rsquo;s chip-on-wafer work in-house. But AI demand keeps overflowing their lines, and the overflow &mdash; on-substrate assembly, bumping, test &mdash; lands with the OSATs. Amkor&rsquo;s 10-year Arizona deal with TSMC and ASE&rsquo;s ~19% YoY growth in its advanced-packaging segment are the receipts. The back end is being pulled up the value chain toward the front end &mdash; and the fight over who owns each step is this entry&rsquo;s moat question.</p>
+          </div></div>
+        </details>
+
+        <details class="step-card">
+          <summary><span class="step-badge">3</span><span class="step-heading"><span class="step-kicker">The moat</span><span class="step-name">Scale, proximity, and the overflow question</span></span></summary>
+          <div class="detail-body"><div class="step-story">
+            <p><strong>The moat question:</strong> scale plus proximity to fabs; who captures the advanced-packaging overflow?</p>
+            <p><strong>Scale</strong> is the first half of the moat. Assembly and test is brutally capital-intensive &mdash; the lines only pay when they run full, and the biggest OSAT spreads that cost across the most customers. ASE&rsquo;s ~45% share of top-10 revenue is not just bragging rights; it is bargaining power with substrate suppliers and the engineering bench to qualify new processes fastest.</p>
+            <p><strong>Proximity to fabs</strong> is the second half. Wafers are fragile and heavy; the back end clusters around the front end. Taiwan holds roughly 41% of OSAT revenue for a reason &mdash; finished wafers roll straight from TSMC&rsquo;s fabs to ASE&rsquo;s plants in Kaohsiung. The counter-move is geographic: Amkor is building advanced-packaging capacity in Arizona, next to TSMC&rsquo;s new fab, and signed a 10-year deal to take its packaging and test overflow. Onshoring is becoming part of the moat.</p>
+            <p>And the open question underneath: as packaging turns strategic, do OSATs graduate from vendors to partners &mdash; or do the foundries keep the crown-jewel steps and leave the OSATs the overflow? ASE and Amkor are betting on the former, investing billions in 2.5D/3D capacity. The next few years of AI buildout will grade that bet.</p>
+            <p class="plain-note"><strong>In plain English:</strong> whoever runs the most lines, closest to the fabs, and can handle the fanciest packages &mdash; wins the back end.</p>
+          </div></div>
+        </details>
+      </div>
+
+      <aside class="company-panel">
+        <h4>Companies behind the back end</h4>
+        <p><strong>Names to know:</strong> ASE, Amkor &mdash; plus JCET and Powertech to complete the picture.</p>
+        <p><strong>ASE</strong> (Taiwan) &mdash; the world&rsquo;s largest OSAT by a wide margin (~45% of top-10 revenue, ~$18.5B in 2024); the default back-end partner for the industry&rsquo;s biggest names. <strong>Amkor</strong> (USA) &mdash; #2 globally (~$6.3B revenue in 2024), headquartered in the US with the Arizona advanced-packaging campus and the TSMC deal. <strong>JCET</strong> (China) &mdash; #3 (~$5B in 2024, +19% YoY), the Chinese national champion, growing fastest of the big three. <strong>Powertech</strong> (Taiwan) &mdash; #5 (~$2.3B), the memory-packaging specialist: DRAM/NAND back end, HBM-adjacent.</p>
+      </aside>
+
+      <details class="video-toggle"><summary><span class="vt-caret">▶</span><span class="vt-text">Show video &mdash; Why AMD&rsquo;s Chiplets Work</span></summary>
+<figure class="inline-figure">
+  <figcaption class="figure-label">WATCH IT HAPPEN &mdash; WHY CHIPLETS MADE PACKAGING STRATEGIC</figcaption>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/-x9nGo0Ge70" title="Why AMD's Chiplets Work" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <p style="color:#aeb7c2;font-size:13px;margin:8px 2px 0">Asianometry on why AMD bet the company on chiplets &mdash; and why that bet is exactly what turned packaging from a commodity shell into a strategic step, pulling OSATs up the value chain. <a style="color:#f5a623" href="https://www.youtube.com/watch?v=-x9nGo0Ge70" target="_blank" rel="noopener">Watch on YouTube.</a></p>
+</figure>
+</details>
+
+</div></details>
       </div>
     </section>
 
